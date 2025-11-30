@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1764497680.91925 "/Users/ronakpunase/Documents/resume/basic.tex" "basic.pdf" "basic" 1764497681.18178 0
-  "/Users/ronakpunase/Documents/resume/basic.tex" 1764497505.64559 6969 4ff7b7712f74f8465d3cb38410353549 ""
+["pdflatex"] 1764498385.89568 "/Users/ronakpunase/Documents/resume/basic.tex" "basic.pdf" "basic" 1764498386.17163 0
+  "/Users/ronakpunase/Documents/resume/basic.tex" 1764498385.71643 6925 fc2b2ac110a897caf34408b7ec07d120 ""
   "/Users/ronakpunase/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1764496810.43016 25396 68c729e996c07b5cd092d964e0f041bc ""
   "/Users/ronakpunase/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk" 1764496673.9825 40112 0f430dbc84e1c2a79bb857c96484dc17 ""
   "/Users/ronakpunase/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk" 1764496852.84139 58988 a6dd6d71887eab8fadbf6ecdfc567bdf ""
@@ -67,9 +67,9 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1764497385 158899 7629702b78876ccfbd182027f49b1291 ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1764495353 2663842 cdbfa2a2621ff8bef7b3aac74712b2e2 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "basic.aux" 1764497681.15061 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
-  "basic.out" 1764497681.131 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "basic.tex" 1764497505.64559 6969 4ff7b7712f74f8465d3cb38410353549 ""
+  "basic.aux" 1764498386.14062 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
+  "basic.out" 1764498386.12151 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "basic.tex" 1764498385.71643 6925 fc2b2ac110a897caf34408b7ec07d120 ""
   (generated)
   "basic.aux"
   "basic.log"
