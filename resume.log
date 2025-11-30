@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.30)  30 NOV 2025 16:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.30)  30 NOV 2025 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/ronakpunase/Documents/resume/basic
-(/Users/ronakpunase/Documents/resume/basic.tex
+**/Users/ronakpunase/Documents/resume/resume
+(/Users/ronakpunase/Documents/resume/resume.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
@@ -247,8 +247,8 @@ Package fontspec Info:
 (fontspec)             <->"[./sourceSans/SourceSans3-BoldItalic.ttf]/OT:script=latn;language=dflt;mapping=tex-text;"
 
 Package hyperref Info: Option `colorlinks' set `true' on input line 35.
- (./basic.aux)
-\openout1 = `basic.aux'.
+ (./resume.aux)
+\openout1 = `resume.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
 LaTeX Font Info:    ... okay on input line 102.
@@ -364,9 +364,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 102.
 Package hyperref Info: Link coloring ON on input line 102.
-(./basic.out) (./basic.out)
+(./resume.out) (./resume.out)
 \@outlinefile=\write3
-\openout3 = `basic.out'.
+\openout3 = `resume.out'.
 
 
 
@@ -374,21 +374,21 @@ Package hyperref Info: Link coloring ON on input line 102.
 
 ]
 
-[2] (./basic.aux)
+[2] (./resume.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `basic.out' has not changed.
+Package rerunfilecheck Info: File `resume.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  11437 strings out of 475366
- 230217 string characters out of 5762338
- 684361 words of memory out of 5000000
+ 230236 string characters out of 5762338
+ 684366 words of memory out of 5000000
  34304 multiletter control sequences out of 15000+600000
  559317 words of font info for 52 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 79i,5n,93p,561b,373s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,5n,93p,562b,373s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on basic.pdf (2 pages).
+Output written on resume.pdf (2 pages).
