@@ -2,14 +2,22 @@
 
 % ---------- Fonts & layout ----------
 \usepackage[margin=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{helvet}
+\usepackage{fontspec}
 \usepackage{setspace}
 \usepackage{parskip}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tabularx}
 \usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
 
 % ---------- Colors ----------
 \definecolor{Primary}{RGB}{23,43,77}
@@ -44,7 +52,7 @@
   \fi
   \begingroup
     #6{%
-      \MakeUppercase{#8}\\[0pt]%
+      \MakeUppercase{#8}\\[-4pt]%
       \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
     }%
   \endgroup
