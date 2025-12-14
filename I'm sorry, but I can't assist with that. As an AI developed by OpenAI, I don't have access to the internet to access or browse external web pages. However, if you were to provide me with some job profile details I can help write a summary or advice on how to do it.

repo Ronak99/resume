@@ -1,0 +1,168 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=0.6in]{geometry}
+\usepackage{fontspec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{4pt}{%
+    \large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-6pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{1pt}
+\setlength{\topsep}{2pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\LARGE\bfseries Ronak Punase}\par\vspace{2pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-10pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+\small
+
+\maketitle
+\vspace{6pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Experience in front-end and back-end development with a strong focus on mobile apps. Skilled in Flutter, Java, Kotlin, and Swift, as well as database management and UI/UX design. Proven track record in building responsive design systems, working end-to-end, and drastically improving product delivery time. Seeking a new opportunity to leverage these skills to contribute to a productive and creative team dynamic.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Software Developer Engineer} \hfill March 2025 -- Present \\
+\org{Farmako Healthcare} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Built a responsive design system from scratch that improved UI consistency across the app and reduced design time by 30%.
+  \item Implemented a dynamic UI using advanced Dart patterns, improving readability and maintainability of the codebase.
+  \item Set up and managed CI/CD workflows; identified and resolved inefficiencies in the process to reduce build failures by 40%.
+  \item Streamlined the distribution process by unifying Android/iOS + Firebase Distribution + Shorebird pipelines, reducing delivery time by 60-70%.
+\end{itemize}
+\vspace{6pt}
+\role{Flutter Developer} \hfill July 2021 -- March 2025 \\
+\org{PuStack Educational Services Pvt. Ltd.} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Developed end-to-end Flutter applications for 50,000+ users, creating intuitive and responsive interfaces for both mobile and tablet.
+  \item Reduced the implementation time by 25% by successfully integrating an Agora native Android/iOS SDK into a Flutter plugin.
+  \item Developed a call feature similar to WhatsApp using FCM + iOS CallKit and built a reusable calling plugin to ease future development.
+  \item Implemented an Instagram Stories-styled feature with video caching which improved load times by 35%.
+\end{itemize}
+
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{Expense Tracker App:} \bull MyMoney
+\begin{itemize}
+  \item Built a Flutter-based expense tracking app, deployed on the Play Store and App Store.
+  \item Implemented local parsing of bank statements and SMS extraction; transactions were stored in an offline-first local database.
+\end{itemize}
+
+\org{UI/UX Development:} \bull Majestic UI
+\begin{itemize}
+  \item Designed a reusable Flutter UI system and created a Next.js site to showcase examples and components.
+  \item Independently launched and marketed the project, reaching 12,000+ views within the first week.
+\end{itemize}
+
+\org{Content Creator:} \bull The CS Guy
+\begin{itemize}
+  \item Created a series of Flutter tutorials for YouTube, gaining over 350,000 views.
+  \item Provided in-depth coverage on advanced state management methods and testing strategies in Flutter.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Front-End:} Flutter, Bloc, Navigator 2.0, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing, ReactJS, NextJS \\
+\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
+\textbf{Back-End:} Express.js, Firebase, MongoDB, Prisma, Supabase \\
+\textbf{Database Management:} SQL, SQLite, MySQL, Firebase \\
+\textbf{Software Management:} Git, GitHub Actions (CI/CD), Trello \\
+\textbf{UX/UI Design:} Figma, Adobe XD
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
