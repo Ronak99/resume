@@ -1,0 +1,169 @@
+Sure, in line with the provided job expectations, I have added managerial and strategic responsibilities to your career history. Here is the updated version of your resume in Latex:
+
+```latex
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Relevant packages ----------
+\usepackage[margin=0.6in]{geometry}
+\usepackage{fontspec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{4pt}{%
+    \large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-6pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{1pt}
+\setlength{\topsep}{2pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\LARGE\bfseries Ronak Punase}\par\vspace{2pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-10pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} 
+
+\begin{document}
+\small
+
+\maketitle
+\vspace{6pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Experienced software engineer with a track record of leading teams, setting goals, and developing operational and strategic programs to achieve organizational objectives. Proficient in Flutter, Android/iOS, ReactJS, and backend systems.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Software Development Manager} \hfill March 2025 -- Present \\
+\org{Farmako} \bull \blackLink{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Managed and led a team of engineers focused on Flutter and native Android/iOS app development.
+  \item Set the team's strategic vision and operational goals aligned with the company's objectives.
+  \item Ensured efficient operations by streamlining CI/CD workflows, reducing build failures by 40%.
+  \item Improved performance metrics by unifying app distribution pipelines, resulting in a reduction of distribution time by 60-70%.
+  \item Fostered a positive work environment, championing open communication and team collaboration.
+\end{itemize}
+\vspace{6pt}
+\role{Senior Flutter Developer} \hfill July 2021 -- March 2025 \\
+\org{PuStack} \bull \blackLink{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Led a team of Flutter developers, focusing on end-to-end app development for tutors and students.
+  \item Contributed to conflict resolution and team performance, through effective communication.
+  \item Strategically integrated Agora native Android/iOS SDKs, reducing implementation time by 25%.
+  \item Collaborated with diverse functional teams, delivering a high-performing app used by over 50,000 users.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{MyMoney} \bull \blackLink{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Led a team to develop a Flutter expense tracker app available on the Play Store and App Store.
+  \item Demonstrated strategic decision-making by implementing local parsing for bank statements.
+\end{itemize}
+
+\org{Majestic UI} \bull Passion Project \bull \blackLink{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Managed the overall project, developing a reusable Flutter UI system distributing examples and components.
+\end{itemize}
+
+\org{The CS Guy} \bull Passion Project \bull \blackLink{https://youtube.com/@TheCSGuy}{youtube.com/@TheCSGuy}
+\begin{itemize}
+  \item Created a free course on Flutter development, reaching over 350,000 views.
+  \item Demonstrated leadership and teaching skills, positively impacting the developer community.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Leadership:} Team Management, Strategy Development, Conflict Resolution \\
+\textbf{Flutter:} Bloc, Navigator 2.0, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing \\
+\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
+\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
+\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
+\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
+```
+
+Note: As an AI language model, I rely on the information provided to me. If there are any inaccuracies in your resume, it's important for you to make the necessary corrections.
