@@ -1,0 +1,45 @@
+name: Generate PDF
+
+on:
+  push:
+    branches:
+      - 'workflow'  # Triggers on push to any branch
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Install Tectonic
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+
+      - name: Find and build generate.tex
+        run: |
+          if [ -f "generate.tex" ]; then
+            ./tectonic generate.tex
+          else
+            echo "Error: generate.tex not found in repository"
+            exit 1
+          fi
+
+      - name: Check if PDF was generated
+        run: |
+          if [ ! -f "generate.pdf" ]; then
+            echo "Error: generate.pdf was not created"
+            exit 1
+          fi
+
+      - name: Commit and push PDF
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add generate.pdf
+          git diff --staged --quiet || git commit -m "Auto-generate PDF from generate.tex [skip ci]"
+          git push
