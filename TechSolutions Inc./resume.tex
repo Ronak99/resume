@@ -1,0 +1,130 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=0.6in]{geometry}
+\usepackage{fontspec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{4pt}{%
+    \large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-6pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{1pt}
+\setlength{\topsep}{2pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\LARGE\bfseries Ronak Punase}\par\vspace{2pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      +91 86025 59742 \bull
+      \blackLink{http://linkedin.com/in/ronak-punase}{linkedin.com/in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-10pt}
+}
+\makeatother
+
+\pagestyle{empty}
+
+\begin{document}
+\small
+\maketitle
+\vspace{6pt}
+
+\section{Professional Summary}
+Enthusiastic Software Developer with a robust programming skill-set, strong attention to detail, and an aptitude for problem-solving. Experienced in designing and implementing software solutions, managing databases and ensuring network security. Thrives in team settings and is profoundly invested in organizational goals. Adept at leveraging project management abilities to achieve project objectives and deadlines. Continuously learning about new technologies and industry trends to stay current and enhance professional growth.
+
+\section{Skills}
+\textbf{Software Development:} Android (Java, Kotlin), Flutter, iOS (Swift) \\
+\textbf{Database Management:} MongoDB, Firebase, Prisma, Supabase, ConvexDB \\
+\textbf{Networking and Security:} Ensuring the safe and secure transfer and storage of data \\
+\textbf{Critical Thinking:} Highly effective at problem-solving and decision making \\
+\textbf{Effective Communication:} Well-versed in communicating with team members and clients \\
+\textbf{Project Deadlines:} Proven record of maintaining strict project timelines \\
+\textbf{Continual Learning:} Consistently aware of up-to-date technology and industry trends
+
+\section{Work Experience}
+
+\role{Software Developer, Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill March 2025 -- Present
+\begin{itemize}
+  \item Designed, developed, implemented and tested multiple software solutions
+  \item Managed and ensured security of databases and network communication
+  \item Practiced problem-solving to swiftly address software issues
+  \item Communicated with team members to coordinate project execution
+  \item Met project deadlines following strict timeline adherences
+  \item Stayed updated with the latest tech trends and industry know-how, contributing positively towards the company's technical growth
+\end{itemize}
+
+\role{Flutter Developer, PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill July 2021 -- March 2025
+\begin{itemize}
+  \item Leveraged software developing skills to create robust Flutter applications
+  \item Mitigated software problems through advanced technical skills
+  \item Managed and fulfilled project deadlines by coordinating with team members
+  \item Presented effective solutions and communicated the same with clients, ensuring project success
+  \item Continuously learned and implemented new technologies and industry trends to meet project targets
+\end{itemize}
+
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021
+
+\end{document}
