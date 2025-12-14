@@ -1,0 +1,46 @@
+Given that no detailed job expectation was provided in the context, it's not possible to update the resume accordingly. However, here's a helpful way of how you can update the resume to match a job expectation:
+
+Assuming you're applying for a senior Flutter Developer role, where your main responsibilities include building flutter apps, integrating native Android/iOS SDKs via a Flutter plugin, and delivering features with high-level user experience, you can update your resume like the following:
+
+\documentclass[10pt, letterpaper]{article}
+
+..
+
+\begin{document}
+\small
+
+\maketitle
+\vspace{6pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Senior Flutter Developer with substantial professional experience building high-performing applications. Proficient in integrating native Android/iOS SDKs via Flutter plugins and delivering features with a high-level user experience. Proved strengths in improving app performance and user satisfaction.
+
+..
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Flutter Developer} \hfill INSERT_DATES_HERE \\
+\org{Company name} \bull \href{WEBSITE_URL_HERE}{WEBSITE_URL_HERE} \hfill \place{Location}
+\begin{itemize}
+  \item INSERT your significant achievements and contributions
+  \item Built Flutter apps for diverse clients with varying business needs, handling all stages of the development lifecycle.
+  \item Effectively integrated native Android/iOS SDKs via a Flutter plugin, reducing implementation time significantly.
+  \item Drove user satisfaction by delivering functionally-rich features, resulting in a strong user retention rate.
+  \item Collaboratively worked with cross-functional teams, including designers, QA, and product managers.
+  \item Conducted code reviews and mentored junior developers.
+\end{itemize}
+..
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Proficient:} Flutter, Dart, Provider, BLoC, Firebase, Git \\
+\textbf{Knowledgeable:} Android (Java, Kotlin), iOS (Swift), Redux, MVVM, Reactive Programming \\
+\textbf{Tools:} Android Studio, VS Code, IntelliJ, GitLab, GitHub Actions (CI/CD)
+
+..
+
+\end{document}
+
+Make sure to replace placeholders (text in all caps) with appropriate information as per your experience and the job role. Remember to tailor the information to highlight the skills and experiences that are most relevant to the job you're applying for.
