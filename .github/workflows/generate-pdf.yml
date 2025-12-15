@@ -73,12 +73,38 @@ jobs:
           git config --local user.name "Ronak99"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           
-          # Add all generated PDFs from the list
+          # Store generated PDFs in a temporary directory
+          mkdir -p /tmp/generated_pdfs
           if [ -f pdf_files.txt ]; then
             while IFS= read -r pdf_file; do
               if [ -n "$pdf_file" ] && [ -f "$pdf_file" ]; then
-                git add "$pdf_file"
-                echo "Added $pdf_file to staging"
+                cp "$pdf_file" "/tmp/generated_pdfs/$(basename "$pdf_file")"
+                echo "Stored $pdf_file"
+              fi
+            done < pdf_files.txt
+          fi
+          
+          # Fetch all branches
+          git fetch origin
+          
+          # Checkout or create the generated branch
+          if git show-ref --verify --quiet refs/remotes/origin/generated; then
+            git checkout -b generated origin/generated 2>/dev/null || git checkout generated
+            git pull --rebase origin generated || true
+          else
+            git checkout -b generated
+          fi
+          
+          # Copy stored PDFs to the generated branch
+          if [ -f pdf_files.txt ]; then
+            while IFS= read -r pdf_file; do
+              if [ -n "$pdf_file" ]; then
+                pdf_basename=$(basename "$pdf_file")
+                if [ -f "/tmp/generated_pdfs/$pdf_basename" ]; then
+                  cp "/tmp/generated_pdfs/$pdf_basename" "$pdf_file"
+                  git add "$pdf_file"
+                  echo "Added $pdf_file to staging"
+                fi
               fi
             done < pdf_files.txt
           fi
@@ -87,7 +113,7 @@ jobs:
           if ! git diff --staged --quiet; then
             COMMIT_MSG="Auto-generate PDFs from .tex files [skip ci]"
             git commit -m "$COMMIT_MSG"
-            git push origin HEAD:generated
+            git push origin generated
           else
             echo "No PDF files to commit"
           fi
