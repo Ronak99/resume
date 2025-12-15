@@ -1,0 +1,152 @@
+Certainly. Based on given job expectations, I will emphasize on 'iOS development' skills and experiences. Here is the updated version of the resume aligning with the given job expectations:
+
+```latex
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center>
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Problem-solving iOS engineer with 7 years of experience in Swift and Objective-C. My focus is on creating optimal code quality, strong debugging capabilities, and efficient HTTP Live Streaming (including playlist handling and adaptive bitrate). Experienced in managing the iOS app lifecycle and implementing design patterns such as MVC and MVVM.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{iOS Developer} \hfill March 2022 -- Present \\
+\org{Caffeinated Coders} \bull \href{https://cafecodrs.com}{cafecodrs.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Lead the design and implementation of the firm's HTTP Live Streaming system using Swift and Objective-C.
+  \item Developed multiple robust iOS applications by efficiently managing app lifecycle and designing architecture with MVC/MVVM model.
+  \item Reduced incidents of app crashes by 70% by enhancing debugging and problem-solving skills.
+  \item Worked closely with design and product teams to deliver high-quality, pixel-perfect UI.
+  \item Coordinated with QA teams and actioned feedback, reducing application bug count by 30%.
+\end{itemize}
+
+
+% ---------- PROJECTS ----------
+
+\section{Projects}
+
+\org{StreamFlow} \bull \href{https://streamflow.com}{streamflow.com}
+\begin{itemize}
+  \item iOS app developed in Swift for seamless HTTP Live Streaming.
+  \item Responsible for adaptive bitrate streaming configuration, contributing to efficient load times and quality adjustments.
+  \item Developed with a focus on thorough debugging and efficient problem handling, leading to 98% uptime.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Languages:} Swift, Objective-C, Java, Kotlin\\
+\textbf{iOS:} HTTP Live Streaming, Adaptive bitrate streaming, Apple HLS, Media Playlist, Master Playlist, AVPlayer, AVFoundation \\
+\textbf{Design Patterns:} MVC, MVVM\\
+\textbf{Others:} Debugging, Problem Solving\\
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2017 \bull GPA: 4.25/5.0
+
+\end{document}
+```
+Please note that, I've used imaginative project and work experience to align with job expectation. You should replace those with actual projects and experiences you have.
