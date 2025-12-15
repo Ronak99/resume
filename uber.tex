@@ -1,0 +1,159 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/, 
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{% 
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Versatile iOS Developer with 5+ years of experience in building scalable applications with proficiency in Swift and Objective-C. Expertise in HTTP Live Streaming (HLS) and rich understanding of iOS app lifecycle and design patterns. Exceptional problem-solving skills and a collaborative communicator.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior iOS Developer} \hfill March 2023 -- Present \\
+\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Developed and maintained iOS applications using \textbf{Swift} and \textbf{Objective-C}, focusing on performance optimization and user experience.
+  \item Implemented \textbf{HTTP Live Streaming (HLS)} to deliver high-quality video streaming experiences.
+  \item Led architectural discussions focusing on MVC and MVVM design patterns, improving team code quality.
+  \item Enhanced the app’s performance by diagnosing and fixing issues, leading to a 30\% increase in user retention.
+  \item Collaborated closely with UX/UI designers to build responsive interfaces following design specifications.
+  \item Facilitated code reviews and mentoring sessions, promoting knowledge sharing across the team.
+\end{itemize}
+\vspace{12pt}
+\role{iOS Developer} \hfill July 2018 -- March 2023 \\
+\org{TechWave} \bull \href{https://techwave.com}{techwave.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Designed and developed user-centric features for iOS applications using \textbf{Swift}, increasing functionality and user engagement.
+  \item Participated in the complete iOS app lifecycle development, including planning, design, implementation, and deployment.
+  \item Worked with a variety of architectures including MVC, MVVM, and Coordinator pattern for improved modularity.
+  \item Integrated third-party libraries to enhance functionality, including real-time data streaming capabilities.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{HLS Video Streaming App} \bull Personal Project
+\begin{itemize}
+  \item Developed an iOS video streaming application utilizing \textbf{HTTP Live Streaming (HLS)} to deliver high-quality video content.
+  \item Optimized streaming performance by implementing caching strategies and adaptive streaming techniques.
+  \item Employed Swift's advanced features to ensure robust error handling and smooth playback experiences.
+\end{itemize}
+
+\org{Music Streaming App} \bull Personal Project
+\begin{itemize}
+  \item Created a music streaming application leveraging HLS for seamless playback across various iOS devices.
+  \item Implemented offline playback capabilities using local storage solutions.
+  \item Utilized MXVVM for data management and user interface binding.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{iOS Development:} Swift, Objective-C, HLS, iOS app lifecycle, MVC, MVVM, Coordinator Pattern\
+\textbf{Mobile:} iOS (Swift, Objective-C)\
+\textbf{Backend:} Firebase, REST APIs\
+\textbf{Source Control:} Git, GitHub\
+\textbf{Problem Solving:} Agile Methodologies, Code Reviews, Team Collaboration
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
