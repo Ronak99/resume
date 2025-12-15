@@ -1,0 +1,93 @@
+name: Generate PDF
+
+# n8n will commit the tex file to the repository
+# workflow gets triggered
+# pdf is generated and saved with the same name in the generated branch
+
+on:
+  push:
+    branches:
+      - 'n8n'  # Triggers on push to any branch
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Tectonic
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+
+      - name: Find changed .tex files and build PDFs
+        id: process_tex
+        run: |
+          # Get list of .tex files that were changed/added in this commit
+          if [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+            TEX_FILES=$(git diff --name-only --diff-filter=ACMR ${{ github.event.before }} ${{ github.sha }} | grep '\.tex$' || true)
+          else
+            # First commit - check all .tex files in HEAD
+            TEX_FILES=$(git ls-tree -r --name-only HEAD | grep '\.tex$' || true)
+          fi
+          
+          if [ -z "$TEX_FILES" ]; then
+            echo "No .tex files found in this commit"
+            exit 1
+          fi
+          
+          echo "Found .tex files:"
+          echo "$TEX_FILES"
+          
+          # Process each .tex file and track generated PDFs
+          > pdf_files.txt  # Create/clear the file
+          while IFS= read -r tex_file; do
+            if [ -n "$tex_file" ] && [ -f "$tex_file" ]; then
+              echo "Processing $tex_file..."
+              ./tectonic "$tex_file"
+              
+              # Get the PDF filename (replace .tex with .pdf)
+              pdf_file="${tex_file%.tex}.pdf"
+              
+              if [ ! -f "$pdf_file" ]; then
+                echo "Error: $pdf_file was not created from $tex_file"
+                exit 1
+              fi
+              
+              echo "Successfully generated $pdf_file"
+              echo "$pdf_file" >> pdf_files.txt
+            fi
+          done <<< "$TEX_FILES"
+
+      - name: Commit and push PDFs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "punase.ronak99@gmail.com"
+          git config --local user.name "Ronak99"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          
+          # Add all generated PDFs from the list
+          if [ -f pdf_files.txt ]; then
+            while IFS= read -r pdf_file; do
+              if [ -n "$pdf_file" ] && [ -f "$pdf_file" ]; then
+                git add "$pdf_file"
+                echo "Added $pdf_file to staging"
+              fi
+            done < pdf_files.txt
+          fi
+          
+          # Commit if there are changes
+          if ! git diff --staged --quiet; then
+            COMMIT_MSG="Auto-generate PDFs from .tex files [skip ci]"
+            git commit -m "$COMMIT_MSG"
+            git push origin HEAD:generated
+          else
+            echo "No PDF files to commit"
+          fi
