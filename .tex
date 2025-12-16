@@ -1,0 +1,132 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} 
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Passionate educator with over 5 years of school teaching experience. Strong background in classroom management, curriculum development, coaching and evaluating teachers, and designing and analyzing assessments to improve student outcomes. Excel at using data to drive academic interventions and student success. Proven track record in maintaining discipline and promoting a positive learning environment. Looking to leverage my experience and skills as an Academic Coordinator to foster a supportive and engaging educational atmosphere.
+
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Academic Coordinator} \hfill March 2016 -- March 2021 \\
+\org{ABC High School} \bull \href{http://abchighschool.com}{abchighschool.com} \hfill \place{Bhopal, MP}
+\begin{itemize}
+  \item Conducted regular classroom observations, providing personnel with meaningful feedback and coaching on effective teaching methodologies, classroom management, and instructional delivery.
+  \item Led curriculum development efforts, aligning academic content with state standards and district's mission.
+  \item Monitored and evaluated student performance data to identify trends, gaps, and needed interventions; coordinated intervention strategies with teaching teams to support student success.
+  \item Played a key role in teacher training workshops and professional development programs, enhancing staff's pedagogical knowledge and skills.
+  \item Maintained student discipline, performed classroom supervision and spot checks to ensure a conducive learning environment.
+\end{itemize}
+
+% ---------- Education ----------
+\section{Education}
+\textbf{Master of Education (M.Ed.)} \bull XYZ University \bull Bhopal, India \bull 2015 \bull GPA: 4.25/5.0
+
+\textbf{Bachelors of Education (B.Ed.)} \bull RGPV University \bull Bhopal, India \bull 2013 \bull GPA: 4.25/5.0
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Classroom Management,} \textbf{Curriculum Development,} \textbf{Teacher Training,} \textbf{Data Analysis,} \textbf{Coaching and Mentoring,} \textbf{Performance Assessment,} \textbf{Team Collaboration,} \textbf{ Academic Intervention Coordination,} \textbf{Communication Skills}
+
+\end{document}
