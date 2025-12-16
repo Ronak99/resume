@@ -1,0 +1,166 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Firstname Lastname},
+  pdfauthor={Firstname Lastname},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Firstname Lastname}\par\vspace{6pt}
+    {\color{Primary}
+      City, State (Open to relocation) \bull
+      \blackLink{mailto:you@email.com}{you@email.com} \bull
+      \blackLink{https://github.com/yourhandle}{github.com/yourhandle} \bull
+      \blackLink{https://linkedin.com/in/yourhandle}{linkedin.com/in/yourhandle}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Senior Software Engineer specializing in Rust and systems programming. Proven record delivering low-latency, memory-safe services at scale, leading migrations from C++/Go to Rust, and elevating reliability through rigorous testing, observability, and SRE practices.
+
+% ---------- CORE SKILLS ----------
+\section{Core Skills}
+\textbf{Languages:} Rust (async, lifetimes, generics, unsafe/FFI), C/C++, Go, Python\\
+\textbf{Systems:} Linux, networking, filesystems, IPC, multithreading, performance tuning\\
+\textbf{Rust Ecosystem:} Cargo, Tokio, async-std, serde, tonic/gRPC, prost, anyhow/thiserror, tracing, criterion, proptest, quickcheck, libFuzzer/AFL, Clippy, Miri\\
+\textbf{Tooling:} Bazel, Git, CI/CD (Buildkite/GitHub Actions), Docker, Kubernetes, OpenTelemetry, Prometheus, Grafana\\
+\textbf{Domains:} Distributed systems, microservices, RPC, streaming, storage, security/hardening
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Software Engineer (Rust)} \bull \org{Google} \bull \href{http://www.google.com}{www.google.com} \bull \place{City, State} \hfill MM YYYY -- Present
+\begin{itemize}
+  \item Led migration of a performance-critical service from C++ to Rust, cutting p99 latency by 35\% and reducing memory-related incidents to zero over 6 months.
+  \item Designed and shipped a Rust-based, async RPC proxy (Tokio + tonic) handling >150k RPS with p99 <10 ms under peak load; improved CPU efficiency by 25\% via zero-copy data paths.
+  \item Introduced property-based and fuzz testing pipelines (proptest, libFuzzer) uncovering >30 defects pre-production; defined reliability SLOs and on-call practices reducing incident rate by 40\%.
+  \item Built observability with OpenTelemetry tracing and Prometheus metrics; reduced mean time to detect by 60\%.
+  \item Authored internal Rust guidelines, mentored 8 engineers on ownership/concurrency patterns, and conducted >150 code reviews.
+  \item Implemented safe FFI bridges to existing C++ libraries; replaced unsafe blocks with audited abstractions to meet security review requirements.
+\end{itemize}
+
+% The "Previous Company" part can be repeated for more employments.
+
+\role{Software Engineer (Rust/C++/Go)} \bull \org{Previous Company} \bull \href{http://www.previouscompany.com}{www.previouscompany.com} \bull \place{City, State} \hfill MM YYYY -- MM YYYY
+\begin{itemize}
+  \item Implemented high-throughput, fault-tolerant services; introduced async Rust components where latency and safety were critical.
+  \item Drove performance profiling (perf/eBPF) and workload benchmarking to guide capacity planning and cost reductions.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{High-Throughput Stream Processor (Rust)}
+\begin{itemize}
+  \item Async pipeline using Tokio; backpressure-aware design; achieved 2x throughput vs. prior Go service with stable p99 latency.
+\end{itemize}
+
+\org{Secure Config Service (Rust)}
+\begin{itemize}
+  \item Implemented end-to-end validation, schema evolution, and client-side caching with exponential backoff; zero production regressions over 12 months.
+\end{itemize}
+
+% ---------- OPEN SOURCE & COMMUNITY ----------
+\section{Open Source \& Community}
+Contributor to Rust ecosystem crates (e.g., serde/tracing-adjacent tooling). Presented internal tech talks on async Rust and safe FFI patterns.
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{B.S. or M.S., Computer Science (or related field)} \bull \org{University Name} \bull \place{City, State} \bull YYYY.
+
+% ---------- CERTIFICATIONS ----------
+\section{Certifications}
+\textbf{(Linux Performance, Cloud/Kubernetes, or Security credentials if applicable)}
+
+% ---------- KEYWORDS FOR ATS ----------
+\section{Keywords for ATS}
+Rust, Tokio, async, ownership/borrowing, lifetimes, FFI, C/C++, gRPC, Protobuf, distributed systems, observability, OpenTelemetry, Prometheus, fuzzing, property-based testing, Bazel, Cargo, Linux, performance profiling, SRE, reliability.
+
+\end{document}
