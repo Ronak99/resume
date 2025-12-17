@@ -1,0 +1,152 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center>
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- OBJECTIVE ----------
+\section{Objective}
+Passionate Software Developer with deep interest in robotics and automation, skilled in C++ and Python, with experience designing and building complex systems. Looking for a challenging role where I can apply my knowledge and skills to develop high-performance and reliable robot systems and software.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Robotics Software Intern} \hfill June 2025 -- August 2025 \\
+\org{XYZ Robotics} \bull \place{Remote}
+\begin{itemize}
+  \item Worked closely with a multidisciplinary team to build and ship robust robotics solutions.
+  \item Engaged in rapid prototyping, debugging, and iteration of robotics systems.
+  \item Gained deep knowledge in real-time control, kinematics, and dynamics of robots.
+\end{itemize}
+\vspace{12pt}
+\role{Software Developer Intern} \hfill May 2024 -- August 2024 \\
+\org{ABC Industries} \bull \place{Remote}
+\begin{itemize}
+  \item Developed perception algorithms for industrial robots, contributing to increased accuracy and performance.
+  \item Gained exposure to integrating sensors, actuators, and embedded systems to optimize system performance.
+  \item Learned about building testing and data pipelines, and documentation in robotics environment.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{Autonomous Mobile Robot} \bull Independent Project
+\begin{itemize}
+  \item Designed and built a mobile robot capable of autonomous navigation.
+  \item Developed the motion planning & control algorithms in Python and C++.
+  \item Worked on SLAM (Simultaneous Localization and Mapping) for this robot.
+  \item Utilized ROS2 as the middleware for system integration.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Programming Languages:} C++, Python  \\
+\textbf{Software:} ROS2 \\
+\textbf{Robotics Skills:} Real-time control, Kinematics and Dynamics, Computer Vision, Manipulation and Planning \\
+\textbf{Software Practices:} CI/CD, Testing, Documentation
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelor of Technology, Robotics} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
