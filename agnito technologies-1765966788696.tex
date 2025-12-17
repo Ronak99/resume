@@ -1,0 +1,175 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} 
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Highly skilled Flutter developer with experience in building, testing, optimizing, and maintaining Android/iOS apps. Proficient in Flutter/Dart, Firebase's suite of functionalities, state management (Provider, Bloc, GetX), and REST API integration with adeptness in MVC/MVVM concepts. Demonstrated strong problem-solving abilities, commitment to clean, scalable code and versed with Git/version control. Experienced in managing Play Store/App Store releases.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{SDE} \hfill March 2025 -- Present \\
+\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Developed Android/iOS apps with Flutter/Dart, integrated Firebase's suite including Authentication, Firestore, and push notifications.
+  \item Implemented REST APIs and JSON integration, providing seamless functionality and data transfer.
+  \item Integrated Firebase-based state management using Provider, Bloc, and GetX frameworks.
+  \item Collaborated with UI/UX and backend teams to deliver scalable, high-performing apps.
+  \item Employed Git/version controls for efficient code management, ensuring adherence to clean coding norms.
+  \item Managed Play Store/App Store releases, maintaining exceptional app performance and user experience.
+\end{itemize}
+\vspace{12pt}
+\role{Flutter Developer} \hfill July 2021 -- March 2025 \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Drew upon strong knowledge in Flutter/Dart to develop highly functional Android/iOS apps.
+  \item Implemented REST APIs and JSON integrations for flawless data transfer.
+  \item Integrated Firebase (Authentication, Firestore, push notification) for secure and efficient app features.
+  \item Utilized state management frameworks such as Provider, Bloc, and GetX for effective state management.
+  \item Used well-developed debugging skills to maintain high app performance.
+  \item Demonstrated proficiency in Git and version control for efficient code management.
+  \item Managed app releases on Play Store/App Store, ensuring high app quality and performance.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+\org{MyMoney} \bull \href{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Built the app using Flutter/Dart, integrating REST APIs and JSON for efficient data processing.
+  \item Used Firebase (Authentication, Firestore, push notifications) to add secure and efficient features.
+  \item Incorporated state management (Provider, Bloc, GetX) for effective handling of app state.
+  \item Used strong debugging skills to improve app performance.
+\end{itemize}
+
+\org{Majestic UI} \bull Passion Project \bull \href{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Developed the app with Flutter/Dart, with integration of REST APIs and JSON for seamless data transfer.
+  \item Incorporated extensive use of Firebase (Authentication, Firestore, push notifications) for feature integration.
+  \item Implemented state management (Provider, Bloc, GetX) for effective handling of app state.
+  \item Devised debugging strategies to ensure high app performance.
+\end{itemize}
+
+\org{The CS Guy} \bull Passion Project \bull \href{https://youtube.com/@TheCSGuy}{youtube.com/@TheCSGuy}
+\begin{itemize}
+  \item Used advanced state management (Bloc, Riverpod, Provider) practices to build efficient Android/iOS apps with Flutter/Dart.
+  \item Incorporated Firebase (Authentication, Firestore, push notifications) for secure and smooth app performance.
+  \item Debugged and made improvements to maintain high app performance.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Flutter:} Dart, state management (Provider/Bloc/GetX), MVVM architecture, testing and debugging, REST API and JSON integration, Firebase (Authentication, Firestore, push notifications) \\
+\textbf{Mobile:} Android (Java, Kotlin), iOS (Swift), Play Store/App Store releases \\
+\textbf{Web:} REST integration \\
+\textbf{Backend:} Firebase \\
+\textbf{Source Control:} Git, version control \\
+\textbf{Miscellaneous:} Strong problem-solving, code scalability, collaboration
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors in Information Technology} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
