@@ -174,7 +174,7 @@ jobs:
           TEX_FILE: ${{ env.TEX_FILE }}
           PDF_FILE: ${{ env.PDF_FILE }}
         run: |
-          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook-test/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
+          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
           
           if [ -z "$PDF_FILE" ] || [ -z "$TEX_FILE" ]; then
             echo "ERROR: PDF_FILE or TEX_FILE not set"
@@ -214,7 +214,7 @@ jobs:
           ERROR_MSG: ${{ env.ERROR_MSG }}
           TEX_FILE: ${{ env.TEX_FILE }}
         run: |
-          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook-test/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
+          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
           
           ERROR_MESSAGE="${ERROR_MSG:-Webhook notification failed after successful PDF generation}"
           TEX_FILE_INFO="${TEX_FILE:-Unable to determine}"
@@ -246,7 +246,7 @@ jobs:
         env:
           ERROR_MSG: ${{ env.ERROR_MSG }}
         run: |
-          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook-test/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
+          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
           
           # Get the failed step name (try to get from job context)
           FAILED_STEP="${GITHUB_ACTION:-Unknown step}"
