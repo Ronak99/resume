@@ -1,0 +1,158 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Driven and collaborative engineering manager/product-focused software engineer with a passion for building and leading high-performance teams. Well versed in servant leadership, empathetic management, and recruitment, with extensive experience in agile product-development environments. Highly effective in driving quality software development, supporting technical decision-making processes, and placing a keen focus on end-user needs. Proven capacity to remove blockers to improve workflow efficiency and deliver top-tier customer and business value.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Engineering Manager} \hfill March 2025 -- Present \\
+\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Employed servant-leadership principles to build trust within the team, fostering a transparent and collaborative environment.
+  \item Regularly held 1:1s, created personal development plans, and took on proactive recruitment responsibilities to maintain a high-performing team.
+  \item Successfully removed blockers with empathy to create a safe team environment and improve workflow efficiency.
+  \item Guided the team towards high-quality software development, reinforcing technical decision-making processes in line with product-focused needs.
+  \item Advocated for an agile, dynamic setting and encouraged team leadership to drive product development further.
+  \item Conducted effective communication across teams, raising issues constructively and consistently evaluated engineering work through the lens of customer and business value.
+\end{itemize}
+% Previous bullet points according to your performance in the said role.
+\vspace{12pt}
+
+% Previous work experiences as per your LaTeX structure.
+
+% ---------- LEADERSHIP ----------
+\section{Leadership}
+\role{Project Lead} \hfill August 2022 -- Present \\
+\org{Leadership} \bull Passion Project \bull \href{https://leadershipProject.com}{leadershipProject.com}
+\begin{itemize}
+  \item Led a team of engineers to build high-quality software solutions in an agile and dynamic setting
+  \item Fostered a transparent and collaborative environment, promoting open communication across teams
+  \item Guided technical decision-making processes and ensured product-focused end goals
+  \item Regularly evaluated engineering work, ensuring it delivers top-tier customer and business value
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+
+% Previous projects according to your LaTeX structure!
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Leadership:} Collaborative \& Empathetic Leadership, Agile Development, Technical Decision-making, Communication Skills, Recruitment, Personal Development Planning, Conflict resolution, and Effective 1:1s\\
+\textbf{Flutter:} Bloc, Navigator 2.0, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing \\
+\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
+\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
+\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
+\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
