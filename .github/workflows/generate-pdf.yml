@@ -199,17 +199,15 @@ jobs:
                 echo "PDF URL: $PDF_URL"
                 
                 # Send webhook with PDF URL and handle errors
-                WEBHOOK_PAYLOAD=$(cat <<EOF
-                {
-                  "status": "success",
-                  "pdf_url": "${PDF_URL}",
-                  "pdf_file": "${pdf_file}",
-                  "repository": "${GITHUB_REPOSITORY}",
-                  "branch": "generated",
-                  "commit": "${COMMIT_SHA}"
-                }
-                EOF
-                )
+                # Escape JSON special characters in variables
+                PDF_URL_ESC=$(printf '%s' "$PDF_URL" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g')
+                PDF_FILE_ESC=$(printf '%s' "$pdf_file" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g')
+                REPO_ESC=$(printf '%s' "$GITHUB_REPOSITORY" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g')
+                COMMIT_ESC=$(printf '%s' "$COMMIT_SHA" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g')
+                
+                # Build JSON payload using printf to avoid heredoc issues
+                WEBHOOK_PAYLOAD=$(printf '{"status":"success","pdf_url":"%s","pdf_file":"%s","repository":"%s","branch":"generated","commit":"%s"}' \
+                  "$PDF_URL_ESC" "$PDF_FILE_ESC" "$REPO_ESC" "$COMMIT_ESC")
                 
                 if ! curl -X POST "$WEBHOOK_URL" \
                   -H "Content-Type: application/json" \
@@ -238,21 +236,14 @@ jobs:
           }
           
           ERROR_MSG_ESC=$(escape_json "$ERROR_MESSAGE")
+          REPO_ESC=$(escape_json "${GITHUB_REPOSITORY}")
+          BRANCH_ESC=$(escape_json "${GITHUB_REF#refs/heads/}")
+          COMMIT_ESC=$(escape_json "${GITHUB_SHA}")
+          RUN_ID_ESC=$(escape_json "${GITHUB_RUN_ID}")
           
-          JSON_PAYLOAD=$(cat <<EOF
-          {
-            "status": "error",
-            "error_message": "${ERROR_MSG_ESC}",
-            "error_type": "webhook_failure",
-            "repository": "${GITHUB_REPOSITORY}",
-            "branch": "${GITHUB_REF#refs/heads/}",
-            "commit": "${GITHUB_SHA}",
-            "workflow_run": "${GITHUB_RUN_ID}",
-            "workflow_url": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}",
-            "note": "PDFs were generated successfully but webhook notification failed"
-          }
-          EOF
-          )
+          # Build JSON payload using printf
+          JSON_PAYLOAD=$(printf '{"status":"error","error_message":"%s","error_type":"webhook_failure","repository":"%s","branch":"%s","commit":"%s","workflow_run":"%s","workflow_url":"https://github.com/%s/actions/runs/%s","note":"PDFs were generated successfully but webhook notification failed"}' \
+            "$ERROR_MSG_ESC" "$REPO_ESC" "$BRANCH_ESC" "$COMMIT_ESC" "$RUN_ID_ESC" "$REPO_ESC" "$RUN_ID_ESC")
           
           # Try to send error notification about webhook failure
           curl -X POST "$WEBHOOK_URL" \
@@ -294,6 +285,10 @@ jobs:
           COMMIT_MSG_ESC=$(escape_json "$COMMIT_MSG")
           FAILED_STEP_ESC=$(escape_json "$FAILED_STEP")
           TEX_FILES_ESC=$(escape_json "$TEX_FILES")
+          REPO_ESC=$(escape_json "${GITHUB_REPOSITORY}")
+          BRANCH_ESC=$(escape_json "${GITHUB_REF#refs/heads/}")
+          COMMIT_SHA_ESC=$(escape_json "${COMMIT_SHA}")
+          RUN_ID_ESC=$(escape_json "${GITHUB_RUN_ID}")
           
           echo "Sending error webhook"
           echo "Error: $ERROR_MESSAGE"
@@ -302,22 +297,9 @@ jobs:
           echo "Commit: ${COMMIT_SHA}"
           echo "Tex files: $TEX_FILES"
           
-          # Create JSON payload
-          JSON_PAYLOAD=$(cat <<EOF
-          {
-            "status": "error",
-            "error_message": "${ERROR_MSG_ESC}",
-            "failed_step": "${FAILED_STEP_ESC}",
-            "repository": "${GITHUB_REPOSITORY}",
-            "branch": "${GITHUB_REF#refs/heads/}",
-            "commit": "${COMMIT_SHA}",
-            "commit_message": "${COMMIT_MSG_ESC}",
-            "tex_files": "${TEX_FILES_ESC}",
-            "workflow_run": "${GITHUB_RUN_ID}",
-            "workflow_url": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          }
-          EOF
-          )
+          # Build JSON payload using printf
+          JSON_PAYLOAD=$(printf '{"status":"error","error_message":"%s","failed_step":"%s","repository":"%s","branch":"%s","commit":"%s","commit_message":"%s","tex_files":"%s","workflow_run":"%s","workflow_url":"https://github.com/%s/actions/runs/%s"}' \
+            "$ERROR_MSG_ESC" "$FAILED_STEP_ESC" "$REPO_ESC" "$BRANCH_ESC" "$COMMIT_SHA_ESC" "$COMMIT_MSG_ESC" "$TEX_FILES_ESC" "$RUN_ID_ESC" "$REPO_ESC" "$RUN_ID_ESC")
           
           # Send error webhook (don't fail if webhook call fails)
           if ! curl -X POST "$WEBHOOK_URL" \
