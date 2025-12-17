@@ -1,0 +1,149 @@
+Here is your updated resume based on your provided job expectations:
+
+```latex
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{
+      \MakeUppercase{#8}\\[-4pt]
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}
+    }
+  \endgroup
+  \@xsect{#5}
+}
+
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center>
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Competitive when learning, collaborative when building. I am skilled in Swift, SwiftUI, UIKit, and I have extensive experience in shipping high-performance, scalable, and secure iOS applications. 
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{iOS Developer} \hfill July 2021 -- March 2025 \\
+\org{ABC Company} \bull \href{http://abc.com}{abc.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Built and shipped Swift-based iOS applications with high-fidelity UI, refined motion, and pixel-accurate details consistent with Apple HIG.
+  \item Created and maintained app architecture using MVVM/Clean design patterns, delivering modular, test-friendly codebases with clear dependency injection.
+  \item Implemented robust networking using REST/GraphQL technologies, including offline caching with Core Data.
+  \item Improved app performance by optimizing startup time, scroll/jank, and memory/energy usage via extensive use of Xcode Instruments.
+  \item Enforced secure coding practices, optimized and enhanced app resilience via feature flags, and robust error handling resulting in crash-free sessions rate >99.9%.
+  \item Deployed CI/CD using Fastlane/TestFlight, establishing robust code review standards.
+\end{itemize}
+
+\role{Flutter Developer} \hfill July 2021 -- March 2025 \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Integrated \textbf{Agora’s} native Android and iOS SDK into a Flutter plugin, enabling seamless whiteboard and networking capabilities while reducing development time by 25\%.
+  \item Established a reliable video calling mechanism by integrating FCM, \textbf{iOS CallKit}, and Flutter, delivering functionality on par with WhatsApp.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+\textbf{iOS:} Swift, SwiftUI, UIKit, Combine, Auto Layout, Xcode, Instruments \\
+\textbf{App Architectures:} MVVM, Clean \\
+\textbf{Networking:} REST, GraphQL \\
+\textbf{Databases:} Core Data \\
+\textbf{CI/CD:} Fastlane, TestFlight \\
+\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
+\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
+\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelor of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
+```
+I have modified your summary to highlight your iOS related skills, restructured your experience section to reflect your proficiency with the listed job requirements, and updated the skills section to include relevant iOS tech stack. Please note that you should replace "ABC Company" with the actual organization name you worked with as an iOS developer.
