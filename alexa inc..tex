@@ -1,0 +1,164 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Your Name},
+  pdfauthor={Your Name},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Your Name}\par\vspace{6pt}
+    {\color{Primary}
+      Location \bull
+      \blackLink{mailto:youremail@example.com}{youremail@example.com} \bull
+      Phone \bull
+      \blackLink{https://github.com/yourgithub}{github.com/yourGitHub} \bull
+      \blackLink{http://linkedin.com/in/yourlinkedin}{linkedin.com/in/yourlinkedin}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Professional Summary}
+Systems and embedded engineer with X years building reliable, real-time scheduling and voice-driven experiences. Shipped alarms/timers and time-zone aware features across devices with 99.99%+ reliability.
+
+% ---------- SKILLS ----------
+\section{Core skills}
+\begin{itemize}
+  \item Languages: Java/Kotlin, C++/Rust, Python, TypeScript
+  \item Systems: Scheduling, concurrency, state machines, NTP/clock sync, monotonic vs wall clock
+  \item Cloud/Edge: REST/gRPC, Protobuf, AWS (Lambda, DynamoDB, SQS/SNS), MQTT
+  \item Time/Locale: tzdb, ICU, JSR-310, RRULE, DST/leap seconds
+  \item Quality/DevEx: CI/CD, test automation, observability (Prometheus/Grafana), profiling
+\end{itemize}
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Software Engineer} \hfill Dates \\
+\org{Company A} \hfill \place{Location}
+\begin{itemize}
+  \item Designed a fault-tolerant scheduler for alarms/timers with idempotent APIs and at-least-once delivery; achieved 99.995% on-time firing.
+  \item Implemented recurrence and time-zone correctness using tzdb and RRULE; added automatic DST drift handling and clock resync.
+  \item Integrated voice intents to create/modify alarms; reduced end-to-end scheduling latency by 35% via async pipelines and caching.
+  \item Built observability dashboards and SLOs; cut alert noise 40% and MTTR 25%.
+\end{itemize}
+
+\role{Software Engineer} \hfill Dates \\
+\org{Company B} \hfill \place{Location}
+\begin{itemize}
+  \item Delivered on-device timer stack on embedded Linux; optimized startup and memory to meet tight budgets.
+  \item Added offline scheduling with durable queues and replay protection; enabled safe recovery after reboots.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Key projects}
+
+\org{Multi-device alarm sync}
+\begin{itemize}
+  \item Consistent scheduling across household devices with conflict resolution and CRDT-inspired merge.
+\end{itemize}
+
+\org{Time-change simulator}
+\begin{itemize}
+  \item Test harness for DST and leap-second scenarios in CI; prevented regressions pre-release.
+\end{itemize}
+
+% ---------- EDUCATION ----------
+\section{Education}
+\role{BS/MS in Computer Science} \bull Year \bull \org{University Name}
+
+% ---------- CERTIFICATIONS ----------
+\section{Certifications}
+ AWS Developer Associate, ISTQB or equivalent testing cert
+
+% ---------- ACHIEVEMENTS ----------
+\section{Selected Achievements}
+\begin{itemize}
+  \item 50% reduction in missed or late alarms in legacy system migration
+  \item Authored internal time/date best practices and libs adopted by 5+ teams
+\end{itemize}
+
+\end{document}
