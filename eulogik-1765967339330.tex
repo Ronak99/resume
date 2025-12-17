@@ -1,0 +1,154 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center>
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Skilled digital project manager with extensive knowledge in native Android/iOS apps and Flutter. Proven track record in defining project scopes, implementation of detailed timelines, management of budgets, and delivery of projects within scope.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Digital Project Manager / SDE} \hfill March 2025 -- Present \\
+\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Acted as the lead in defining project scope and plans along with executing detailed timelines.
+  \item Managed project budgets and oversaw the business plan execution.
+  \item Coordinated cross-functional teams to drive online initiatives and mobile app development.
+  \item Developed and stabilized multiple CI/CD workflows, reducing build failures by 40\%.
+  \item Implemented a unified CI/CD pipeline for Android, iOS, Firebase Distribution, and Shorebird, reducing distribution time by several hours (60-70\%).
+  \item Actively involved in risk management, leading to the development of robust mitigation plans.
+  \item Regularly communicated with clients to ensure product delivery is aligned with client expectations.
+  \item Re-implemented the cart as a local-first system, improving add-to-cart speed and delivering a noticeably smoother UX.
+\end{itemize}
+\vspace{12pt}
+\role{Flutter Developer / Project Manager} \hfill July 2021 -- March 2025 \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Oversaw the project management, including defining workstream protocols and coordinating with clients and cross-functional teams.
+  \item Integral in driving online initiatives and mobile app development.
+  \item Developed a \textbf{Flutter video calling plugin} inspired by getstream.io with an abstract ringer for easy Android/iOS integration using native CallKit, cutting development time by over 75\%.
+  \item Managed a complex meeting schedule to ensure collaboration and productivity across all teams.
+  \item Led revisions and seamless deployment of \textbf{PuStack} and \textbf{PuStack Tutor} apps on \textbf{Play Store} and \textbf{App Store}.
+  \item Acted as the main point of contact for clients, maintaining regular communication to ensure the project is in line with client expectations.
+  \item Implemented responsive designs for tablet and iPad, ensuring pixel-perfect UI across diverse screen sizes.
+  \item Built a dedicated Flutter app from scratch for tutors, enabling collaboration between 50,000+ students and tutors.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Project Management:} Scope & Plan Definition, Timeline Execution, Budget Management, Risk Mitigation \\
+\textbf{Flutter:} Bloc, Navigator 2.0, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing \\
+\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
+\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
+\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
+\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Masters in Project Management} \bull XYZ University \bull Bhopal, MP \bull 2023 \bull GPA: 4.5/5.0 \\
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
