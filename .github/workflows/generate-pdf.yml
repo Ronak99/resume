@@ -76,6 +76,8 @@ jobs:
           # Store generated PDFs in a temporary directory
           mkdir -p /tmp/generated_pdfs
           if [ -f pdf_files.txt ]; then
+            # Store pdf_files.txt for later use
+            cp pdf_files.txt /tmp/pdf_files.txt
             while IFS= read -r pdf_file; do
               if [ -n "$pdf_file" ] && [ -f "$pdf_file" ]; then
                 cp "$pdf_file" "/tmp/generated_pdfs/$(basename "$pdf_file")"
@@ -113,7 +115,42 @@ jobs:
           if ! git diff --staged --quiet; then
             COMMIT_MSG="Auto-generate PDFs from .tex files [skip ci]"
             git commit -m "$COMMIT_MSG"
+            COMMIT_SHA=$(git rev-parse HEAD)
             git push origin generated
+            
+            # Store commit SHA for webhook
+            echo "COMMIT_SHA=${COMMIT_SHA}" >> $GITHUB_ENV
+            echo "PDFS_GENERATED=true" >> $GITHUB_ENV
           else
             echo "No PDF files to commit"
+            exit 0
+          fi
+
+      - name: Trigger webhook for generated PDFs
+        if: success()
+        env:
+          COMMIT_SHA: ${{ env.COMMIT_SHA }}
+        run: |
+          WEBHOOK_URL="https://aeravath.app.n8n.cloud/webhook-test/b88c72d3-7fc3-43ea-ba66-048ab0fb405b"
+          
+          # Restore pdf_files.txt from temporary storage
+          if [ -f /tmp/pdf_files.txt ]; then
+            cp /tmp/pdf_files.txt pdf_files.txt
+          fi
+          
+          if [ -f pdf_files.txt ]; then
+            while IFS= read -r pdf_file; do
+              if [ -n "$pdf_file" ]; then
+                # Construct GitHub raw URL for the PDF file
+                PDF_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/generated/${pdf_file}"
+                
+                echo "Triggering webhook for $pdf_file"
+                echo "PDF URL: $PDF_URL"
+                
+                # Send webhook with PDF URL
+                curl -X POST "$WEBHOOK_URL" \
+                  -H "Content-Type: application/json" \
+                  -d "{\"pdf_url\": \"${PDF_URL}\", \"pdf_file\": \"${pdf_file}\", \"repository\": \"${GITHUB_REPOSITORY}\", \"branch\": \"generated\", \"commit\": \"${COMMIT_SHA}\"}"
+              fi
+            done < pdf_files.txt
           fi
