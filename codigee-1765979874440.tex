@@ -1,0 +1,153 @@
+Here is your updated resume with an emphasis on Flutter development. I have tweaked the "Summary" section and reordered the "Skills" section to specifically highlight your Flutter-related skills first. Your Flutter experience is now also more prominent in the "Experience" section.
+
+\begin{document}
+
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Collaborative and experienced Flutter developer with over 4 years of hands-on experience building production Flutter apps with Dart, proficient in state management (Bloc/Provider/Riverpod), navigation, and async programming. Skilled in REST/GraphQL API integration, Firebase and analytics, push notifications, and implementing clean architecture with a focus on SOLID principles, performance and accessibility. Proven record of collaboration in Agile/Scrum environments with strong documentation skills, intricate Git habits, and excellent English communication aptitude.
+
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{SDE - Flutter} \hfill March 2025 -- Present \\
+\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Led the development and stabilization of a unified CI/CD pipeline for Android, iOS, Firebase Distribution, and Shorebird, reducing distribution time by several hours and development time by 25\%.
+  \item Developed Flutter UI components using reliable state management tools, such as Riverpod.
+  \item Implemented REST/GraphQL API integration for service-to-service communication.
+  \item Architected a design system governed by Figma tokens to build resilient Dart-based UIs.
+\end{itemize}
+
+\role{Flutter Developer} \hfill July 2021 -- March 2025 \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
+\begin{itemize}
+  \item Leveraged unit/widget/integration testing, code reviews, and CI/CD practices to improve overall project code quality.
+  \item Managed extensive app store releases and led revisions of PuStack and PuStack Tutor apps in both, Play Store and App Store.
+  \item Developed a resilient call billing and payout system for instructors, increasing engagement by 25\%.
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+\org{MyMoney} \bull \href{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Developed an expense tracking app using advanced dart usage such as extensions, factory constructors, and Bloc for state management.
+  \item Handled REST/GraphQL API interactions, organized unit/widget/integration testing, and ensured high-performance, robust code via CI/CD pipeline.
+\end{itemize}
+
+
+% ---------- SKILLS ----------
+\section{Skills}
+
+\textbf{Flutter:} Dart, Bloc, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing \\
+\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
+\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
+\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
+\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
