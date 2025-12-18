@@ -1,0 +1,146 @@
+
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - CANDIDATE\_NAME},
+  pdfauthor={CANDIDATE\_NAME},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries \placeholder{CANDIDATE\_NAME}}\par\vspace{6pt}
+    {\color{Primary}
+      \placeholder{LOCATION} \bull
+      \blackLink{mailto:\placeholder{EMAIL}}{\placeholder{EMAIL}} \bull
+      \placeholder{PHONE} \bull
+      \blackLink{\placeholder{LINKEDIN\_URL}}{\placeholder{LINKEDIN\_HANDLE}} \bull
+      \blackLink{\placeholder{WEBSITE\_URL}}{\placeholder{WEBSITE\_DOMAIN}}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Experienced backend engineer with over 3 years in designing and implementing transactional systems, particularly in the fintech sector. Proven track record in leading integration projects, ensuring system correctness, and enhancing payment processing capabilities.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Lead Backend Engineer} \hfill \placeholder{START\_DATE} -- \placeholder{END\_DATE} \\
+\org{\placeholder{COMPANY\_NAME}} \bull \href{\placeholder{COMPANY\_URL}}{\placeholder{COMPANY\_DOMAIN}} \hfill \place{\placeholder{LOCATION}}
+\begin{itemize}
+  \item Designed and enforced a canonical payment state machine, improving transaction reliability and efficiency.
+  \item Built and maintained PaymentIntent and ledger models, ensuring accurate financial reporting and reconciliation.
+  \item Led integration with multiple payment gateways, including Stripe and Braintree, enhancing payment processing capabilities.
+  \item Defined idempotency guarantees across APIs and jobs, reducing transaction errors and improving user experience.
+  \item Owned retry and failover logic, ensuring system resilience and operational excellence.
+\end{itemize}
+\vspace{12pt}
+
+% Add more experience entries above this line, each separated by \vspace{12pt}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+\org{Payment Processing System} \bull \textit{Fintech Project} \bull \href{\placeholder{PROJECT\_URL}}{\placeholder{PROJECT\_DOMAIN}}
+\begin{itemize}
+  \item Developed a robust payment processing system that handles retries, duplicate events, and partial failures.
+  \item Implemented webhook ingestion pipelines with replay safety, ensuring data integrity and system reliability.
+\end{itemize}
+
+% Add more projects above this line, each separated by a blank line
+
+% ---------- SKILLS ----------
+\section{Skills}
+\textbf{Programming Languages:} Python, Java, SQL \\
+\textbf{Frameworks:} Django, Flask \\
+\textbf{Tools:} Git, Docker, Kubernetes \\
+\textbf{Payment Systems:} Stripe, Braintree, Adyen, Checkout \\
+\textbf{Concepts:} State Machines, Idempotency, Distributed Systems, Relational Databases, Ledger Models \\
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{\placeholder{DEGREE\_NAME}} \bull \placeholder{INSTITUTION\_NAME} \bull \placeholder{LOCATION} \bull \placeholder{GRADUATION\_YEAR} \bull GPA: \placeholder{GPA}/\placeholder{SCALE}
+
+\end{document}
