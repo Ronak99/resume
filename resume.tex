@@ -25,9 +25,10 @@
 \definecolor{lightblue}{RGB}{10, 132, 255}
 
 % ---------- PDF meta ----------
+% TEMPLATE: Replace with candidate's name
 \hypersetup {
-  pdftitle={Resume - Ronak Punase},
-  pdfauthor={Ronak Punase},
+  pdftitle={Resume - CANDIDATE\_NAME},
+  pdfauthor={CANDIDATE\_NAME},
   colorlinks=true,
   linkcolor=lightblue,
   urlcolor=lightblue,
@@ -76,19 +77,23 @@
 \newcommand{\place}[1]{\textit{#1}}
 \newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
 \newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+% Template placeholder command - renders [PLACEHOLDER] without monospace font
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
 
 
 % ---------- Header ----------
+% TEMPLATE: Header section - replace placeholders with actual contact information
+% Format: Name (large, bold) | Location | Email | Phone | LinkedIn | Website
 \makeatletter
 \renewcommand{\maketitle}{
   \begin{center}
-    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\huge\bfseries \placeholder{CANDIDATE\_NAME}}\par\vspace{6pt}
     {\color{Primary}
-      Bhopal, India \bull
-      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
-      +91 86025 59742 \bull
-      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
-      \blackLink{http://ronakpunase.dev}{ronakpunase.dev}
+      \placeholder{LOCATION} \bull
+      \blackLink{mailto:\placeholder{EMAIL}}{\placeholder{EMAIL}} \bull
+      \placeholder{PHONE} \bull
+      \blackLink{\placeholder{LINKEDIN\_URL}}{\placeholder{LINKEDIN\_HANDLE}} \bull
+      \blackLink{\placeholder{WEBSITE\_URL}}{\placeholder{WEBSITE\_DOMAIN}}
     }
   \end{center}
   \vspace{-8pt}
@@ -105,74 +110,67 @@
 \vspace{15pt}
 
 % ---------- SUMMARY ----------
+% TEMPLATE: Professional summary - 2-3 sentences highlighting key qualifications, experience level, and value proposition
 \section{Summary}
-Competitive when learning, collaborative when building. I am skilled in native Android/iOS apps along with that I have extensive experience in teaching and building countless professional, personal and freelance projects in Flutter.
+\placeholder{Professional summary paragraph describing candidate's experience level, key skills, and career focus. Should be concise (2-3 sentences) and tailored to the target role.}
 
 
 % ---------- EXPERIENCE ----------
+% TEMPLATE: Work experience entries
+% Format: \role{Job Title} \hfill Start Date -- End Date \\
+%         \org{Company Name} \bull \href{URL}{Display URL} \hfill \place{City, State/Country}
+%         \begin{itemize}
+%           \item Achievement-focused bullet points (use \textbf{} for emphasis on key technologies/metrics)
+%         \end{itemize}
+%         \vspace{12pt} (between entries)
 \section{Experience}
-\role{SDE} \hfill March 2025 -- Present \\
-\org{Farmako} \bull \href{https://farmako.ai}{farmako.ai} \hfill \place{Gurugram, Haryana}
+% Example entry structure - repeat this pattern for each position (most recent first):
+\role{\placeholder{JOB\_TITLE}} \hfill \placeholder{START\_DATE} -- \placeholder{END\_DATE} \\
+\org{\placeholder{COMPANY\_NAME}} \bull \href{\placeholder{COMPANY\_URL}}{\placeholder{COMPANY\_DOMAIN}} \hfill \place{\placeholder{LOCATION}}
 \begin{itemize}
-  \item Implemented a responsive and resilient design system governed by \textbf{Figma tokens}.
-  \item Built a new, dynamic UI using advanced Dart features (mixins, factory constructors, detailed enums), improving overall project code quality.
-  \item Developed and stabilized multiple CI/CD workflows, reducing build failures by 40\%.
-  \item Implemented a unified CI/CD pipeline for Android, iOS, Firebase Distribution, and Shorebird, reducing distribution time by several hours (60-70\%).
-  \item Replaced GitHub-hosted runners with local runners, reducing infrastructure costs by 150\% and speeding up builds by 25\%.
-  \item Re-implemented the cart as a local-first system, improving add-to-cart speed and delivering a noticeably smoother UX.
+  \item \placeholder{Achievement-focused bullet point describing impact, technologies used, and quantifiable results when possible. Use \textbackslash textbf\{\} to emphasize key technologies or metrics.}
+  \item \placeholder{Additional bullet points following same format - typically 3-6 bullets per position}
 \end{itemize}
 \vspace{12pt}
-\role{Flutter Developer} \hfill July 2021 -- March 2025 \\
-\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Remote}
-\begin{itemize}
-  \item Integrated \textbf{Agora’s} native Android and iOS SDK into a Flutter plugin, enabling seamless whiteboard and networking capabilities while reducing development time by 25\%.
-  \item Established a reliable video calling mechanism by integrating FCM, \textbf{iOS CallKit}, and Flutter, delivering functionality on par with WhatsApp.
-  \item Developed a \textbf{Flutter video calling plugin} inspired by getstream.io with an abstract ringer for easy Android/iOS integration using native CallKit, cutting development time by over 75\%.
-  \item Implemented responsive designs for tablet and iPad, ensuring pixel-perfect UI across diverse screen sizes.
-  \item Built a dedicated Flutter app from scratch for tutors, enabling collaboration between 50,000+ students and tutors.
-  \item Shipped an \textbf{Instagram Stories–inspired} feature using advanced video caching and Flutter best practices to reduce load times by 35\%.
-  \item Built admin tools including a Content Management System and Customer Care Platform on Flutter Web.
-  \item Led revisions and seamless deployment of \textbf{PuStack} and \textbf{PuStack Tutor} apps on \textbf{Play Store} and \textbf{App Store}.
-  \item Designed a resilient call billing and payout system for instructors, increasing engagement by 25\%.
-\end{itemize}
+% Add more experience entries above this line, each separated by \vspace{12pt}
 
 
 % ---------- PROJECTS ----------
+% TEMPLATE: Personal/professional projects
+% Format: \org{Project Name} \bull [Optional: Project Type] \bull \href{URL}{Display URL}
+%         \begin{itemize}
+%           \item Description bullets highlighting technologies, features, and impact
+%         \end{itemize}
+%         (blank line between projects)
 \section{Projects}
 
-\org{MyMoney} \bull \href{https://majesticui.com}{majesticui.com}
+% Example project structure - repeat this pattern for each project:
+\org{\placeholder{PROJECT\_NAME}} \bull \placeholder{OPTIONAL\_TYPE} \bull \href{\placeholder{PROJECT\_URL}}{\placeholder{PROJECT\_DOMAIN}}
 \begin{itemize}
-  \item Expense tracking app, built in Flutter, published to play store and app store.
-  \item Parses users bank statement locally and stores the transactions in local DB.
-  \item Advanced dart usage: extensions, factory constructors, MVVM with Bloc for state management.
-  \item Fetches last 10 SMS to extract any transaction details and store them in local DB.
+  \item \placeholder{Project description highlighting key features, technologies used, and notable achievements or metrics}
+  \item \placeholder{Additional bullets describing technical details, impact, or unique aspects}
 \end{itemize}
 
-\org{Majestic UI} \bull Passion Project \bull \href{https://majesticui.com}{majesticui.com}
-\begin{itemize}
-  \item Designed a Flutter UI system with reusable components and a CLI delivery system.
-  \item Created a Next.js platform hosting Flutter WebViews to encourage open-source contributions.
-  \item Reached 12,000+ YouTube views within one week of release.
-\end{itemize}
-
-\org{The CS Guy} \bull Passion Project \bull \href{https://youtube.com/@TheCSGuy}{youtube.com/@TheCSGuy}
-\begin{itemize}
-  \item Produced tutorials emphasizing Flutter’s UI capabilities, garnering 200,000+ views.
-  \item Delivered a free Flutter course reaching 150,000+ viewers.
-  \item Demonstrated advanced state management (Bloc, Riverpod, Provider) and TDD practices.
-\end{itemize}
+% Add more projects above this line, each separated by a blank line
 
 % ---------- SKILLS ----------
+% TEMPLATE: Skills organized by category
+% Format: \textbf{Category:} Skill1, Skill2, Skill3, ... \\
+%         Continue with additional categories, each ending with \\
 \section{Skills}
 
-\textbf{Flutter:} Bloc, Navigator 2.0, Provider, Riverpod, Freezed, GetIt, GoRouter, MVVM, Unit Testing \\
-\textbf{Mobile:} Android (Java, Kotlin, Jetpack Compose), iOS (Swift) \\
-\textbf{Web:} ReactJS, NextJS (TypeScript), ExpressJS, Zustand, Redux \\
-\textbf{Backend:} Firebase, MongoDB, Prisma, Supabase, ConvexDB \\
-\textbf{Source Control:} Git, GitHub, GitHub Actions (CI/CD)
+% Group skills into logical categories (e.g., Programming Languages, Frameworks, Tools, etc.)
+% Each category should be bold, followed by comma-separated skills, ending with \\
+\textbf{\placeholder{CATEGORY\_1}:} \placeholder{Skill1}, \placeholder{Skill2}, \placeholder{Skill3}, \placeholder{Skill4} \\
+\textbf{\placeholder{CATEGORY\_2}:} \placeholder{Skill1}, \placeholder{Skill2}, \placeholder{Skill3} \\
+\textbf{\placeholder{CATEGORY\_3}:} \placeholder{Skill1}, \placeholder{Skill2}, \placeholder{Skill3}, \placeholder{Skill4}, \placeholder{Skill5} \\
+\textbf{\placeholder{CATEGORY\_4}:} \placeholder{Skill1}, \placeholder{Skill2}
 
 % ---------- EDUCATION ----------
+% TEMPLATE: Education entries
+% Format: \textbf{Degree Name} \bull Institution Name \bull Location \bull Graduation Year \bull GPA: X.XX/Scale
+% For multiple degrees, add additional lines separated by blank lines
 \section{Education}
-\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+\textbf{\placeholder{DEGREE\_NAME}} \bull \placeholder{INSTITUTION\_NAME} \bull \placeholder{LOCATION} \bull \placeholder{GRADUATION\_YEAR} \bull GPA: \placeholder{GPA}/\placeholder{SCALE}
 
 \end{document}
