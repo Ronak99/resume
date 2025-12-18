@@ -1,0 +1,150 @@
+
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - CANDIDATE\_NAME},
+  pdfauthor={CANDIDATE\_NAME},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries \placeholder{CANDIDATE\_NAME}}\par\vspace{6pt}
+    {\color{Primary}
+      \placeholder{LOCATION} \bull
+      \blackLink{mailto:\placeholder{EMAIL}}{\placeholder{EMAIL}} \bull
+      \placeholder{PHONE} \bull
+      \blackLink{\placeholder{LINKEDIN\_URL}}{\placeholder{LINKEDIN\_HANDLE}} \bull
+      \blackLink{\placeholder{WEBSITE\_URL}}{\placeholder{WEBSITE\_DOMAIN}}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Backend Engineer with over 2 years of experience in developing robust payment processing systems. Proficient in REST APIs, relational databases, and asynchronous processing. Strong background in implementing idempotent API designs and handling webhooks for external integrations.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Backend Engineer} \hfill January 2021 -- Present \\
+\org{Tech Solutions Pvt. Ltd.} \bull \href{http://techsolutions.com}{techsolutions.com} \hfill \place{Delhi, India}
+\begin{itemize}
+  \item Developed and maintained payment gateway adapters for Stripe and PayPal, enhancing transaction reliability and user experience.
+  \item Built webhook ingestion pipelines to process real-time payment notifications, improving system responsiveness.
+  \item Implemented idempotent processors and retry logic for failed payments, reducing transaction errors by 30\%.
+  \item Contributed to the design of routing and decision engine rules, optimizing payment processing workflows.
+  \item Enhanced observability and logging mechanisms, leading to a 25\% reduction in incident response time.
+\end{itemize}
+\vspace{12pt}
+
+\role{Junior Backend Developer} \hfill June 2019 -- December 2020 \\
+\org{Innovatech Solutions} \bull \href{http://innovatech.com}{innovatech.com} \hfill \place{Delhi, India}
+\begin{itemize}
+  \item Assisted in the development of internal APIs and background jobs for payment processing, ensuring high availability and performance.
+  \item Collaborated with cross-functional teams to integrate external payment processors, enhancing system capabilities.
+  \item Participated in the implementation of failure handling strategies, improving overall system resilience.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+\org{Payment Gateway Integration} \bull Professional \bull \href{http://paymentgateway.com}{paymentgateway.com}
+\begin{itemize}
+  \item Designed and implemented a payment gateway integration for multiple processors, including Stripe and PayPal, focusing on security and performance.
+  \item Developed comprehensive testing strategies to ensure reliability and compliance with industry standards.
+\end{itemize}
+
+% ---------- SKILLS ----------
+\section{Skills}
+\textbf{Programming Languages:} Python, Java, SQL \\
+\textbf{Frameworks:} Django, Flask \\
+\textbf{Tools:} Docker, Kubernetes, Git \\
+\textbf{Technologies:} REST APIs, Webhooks, Relational Databases, Asynchronous Processing, Idempotent API Design \\
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelor of Technology in Computer Science} \bull University of Delhi \bull Delhi, India \bull 2019 \bull GPA: 8.5/10
+
+\end{document}
