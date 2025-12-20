@@ -1,0 +1,175 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+% Template placeholder command - renders [PLACEHOLDER] without monospace font
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+% Header section - replace placeholders with actual contact information
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, Madhya Pradesh, India \bull
+      punase.ronak99@gmail.com \bull
+      +91 86025 59742 \bull
+      \href{https://www.linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \href{https://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Competitive when learning, collaborative when building. Seasoned software engineer with experience across mobile app development (Flutter) and embedded systems (ARM Cortex-M). Proven track record leading design and implementation, architecture decisions, mentoring, and code reviews; driving CI/CD improvements and cross-functional collaboration with hardware, firmware, QA and product management. Committed to delivering secure, reliable software with performance optimizations and system-level thinking, while embracing Infineon's focus on career development, flexible work arrangements, and wellbeing.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{SDE} \hfill 03/2025 -- Present \\
+\org{Farmako} \bull \href{https://example.com/farmako}{Farmako} \hfill \place{Gurugram, Haryana}
+\begin{itemize}
+  \item Led design and implementation of a component/system across mobile UI, establishing architecture standards and guiding junior engineers through code reviews.
+  \item Architected and implemented a design system governed by Figma tokens; ensured consistency across features and reduced UI defects.
+  \item Developed dynamic UI using Dart features with a focus on clean architecture and testability.
+  \item Built and evolved CI/CD workflows, reducing build failures by 40% and minimizing distribution time; implemented automated quality gates.
+  \item Implemented a unified CI/CD pipeline; replaced GitHub runners with local runners, speeding up builds by 25%.
+  \item Re-implemented cart as a local-first system, improving UX performance and resilience.
+  \item Collaborated with hardware, firmware, QA, and product management to analyze requirements, perform design reviews, and own milestones end-to-end.
+\end{itemize}
+\vspace{12pt}
+
+\role{Flutter Developer} \hfill 07/2021 -- 03/2025 \\
+\org{PuStack} \bull \href{https://example.com/pustack}{PuStack} \hfill \place{Remote}
+\begin{itemize}
+  \item Integrated Agora’s SDK into a Flutter plugin, reducing development time by 25% and ensuring robust video features.
+  \item Established a reliable video calling mechanism using Flutter and native bridges; collaborated with cross-functional teams to define requirements.
+  \item Developed a dedicated Flutter app for tutors, enabling collaboration among 50,000+ users; implemented scalable architecture.
+  \item Built admin tools on Flutter Web and led app revisions and deployments; conducted code reviews and mentored junior developers.
+  \item Designed a resilient call-billing system to improve engagement while maintaining data security and privacy.
+  \item Acted as a technical lead on features, performed regular code reviews, and contributed to system-level integration.
+  \item Worked with product management to analyze requirements, participate in design reviews, and ensure on-time milestone delivery.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- PROJECTS ----------
+\section{Projects}
+\org{MyMoney} \bull \href{https://majesticui.com}{majesticui.com}
+\begin{itemize}
+  \item Flutter-based expense tracking app with local persistence and cloud sync; focused on secure data handling and a responsive UI.
+  \item Architected modular UI components and data layer to support rapid feature iteration.
+\end{itemize}
+\bigskip
+
+\org{Majestic UI} \bull
+\href{https://www.youtube.com/@MajesticUI}{YouTube/channel}
+\begin{itemize}
+  \item UI/UX components library and tutorials; project gained significant audience, driving adoption and feedback loops.
+  \item Demonstrated end-to-end design, implementation, and testing of UI patterns in Flutter.
+\end{itemize}
+\bigskip
+
+\org{The CS Guy} \bull
+\href{https://www.youtube.com/@TheCSGuy}{YouTube}
+\begin{itemize}
+  \item Flutter tutorials and demonstrations; built a community around mobile development concepts and best practices.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- SKILLS ----------
+\section{Skills}
+\textbf{Programming Languages:} Dart, C, Java, Kotlin, Swift \\
+\textbf{Mobile/Frontend Frameworks:} Flutter, ReactJS, NextJS, ExpressJS \\
+\textbf{Embedded & IoT:} Embedded Systems, Microcontrollers, ARM Cortex-M \\
+\textbf{Data & Backend:} Firebase, MongoDB \\
+\textbf{Design & Architecture:} Software Development Methodologies, System Design, Design Systems \\
+\textbf{Tools & Practices:} CI/CD, Git, Agile/Scrum, Code Reviews, Cross-functional collaboration
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelor of Engineering} \bull \textbf{RGPV University} \bull \place{Bhopal, MP} \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
