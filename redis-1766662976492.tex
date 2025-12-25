@@ -1,0 +1,145 @@
+
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+% Replace CANDIDATE_NAME with actual name
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, Madhya Pradesh, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{https://ronak99.github.io/portfolio/}{ronak99.github.io/portfolio}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty} % Add this line to remove page numbers
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Dynamic backend developer with 4 years of experience, excelling in designing and deploying scalable and high-performance applications. Proficient in a range of programming languages and cloud technologies, bringing a strong focus on AI-driven solutions and cross-team collaboration.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Flutter Developer} \hfill 07/2021 -- Present \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Panipat, Haryana}
+\begin{itemize}
+  \item Developed and deployed scalable mobile applications while ensuring high user engagement and reliable performance, resulting in a \textbf{25\% increase} in instructor use.
+  \item Integrated native SDKs and enhanced user experience through responsive designs, significantly improving application performance.
+  \item Led the creation of an in-house video calling plugin, leveraging CI/CD practices for seamless deployment across environments.
+  \item Mentored team members on best practices in mobile development, sharing knowledge as a content creator on platforms like YouTube.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 (OPTIONAL) ----------
+\section{Projects}
+\org{Majestic UI} \bull UI Development \bull \href{https://github.com/ronak99/majestic-ui}{GitHub} 
+\begin{itemize}
+  \item Designed a Flutter UI system with reusable components to enhance development efficiency across projects.
+\end{itemize}
+
+\org{Skype Clone in Flutter} \bull Application Development \bull \href{https://github.com/ronak99/skype-clone}{GitHub}
+\begin{itemize}
+  \item Created a scalable application that mimicked core functionalities of Skype, demonstrating technical prowess in real-time communication.
+\end{itemize}
+
+% ---------- DYNAMIC SECTION 2 (OPTIONAL) ----------
+\section{Skills}
+\textbf{Languages:} Java, Kotlin, Python, Golang, Dart \\
+\textbf{Frameworks & Tools:} Flutter, ReactJS, NextJS, Docker, Kubernetes, Terraform, GitHub Actions \\
+\textbf{Databases:} Redis, NoSQL \\
+\textbf{Concepts:} AI/ML fundamentals, cloud-native applications
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/4.5
+
+\end{document}
