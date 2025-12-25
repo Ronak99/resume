@@ -1,0 +1,157 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Ronak Punase},
+  pdfauthor={Ronak Punase},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Ronak Punase}\par\vspace{6pt}
+    {\color{Primary}
+      Bhopal, Madhya Pradesh, India \bull
+      \blackLink{mailto:punase.ronak99@gmail.com}{punase.ronak99@gmail.com} \bull
+      +91 86025 59742 \bull
+      \blackLink{https://linkedin.com/in/ronak-punase}{in/ronak-punase} \bull
+      \blackLink{https://ronak99.github.io/portfolio/}{ronak99.github.io/portfolio/}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Experienced backend engineer with 4+ years in designing, developing, testing, and deploying scalable cloud-based solutions across diverse platforms. Expertise in building high-quality production-grade APIs, collaborating on cross-functional teams, and driving innovation with modern languages and cloud-native technologies. Adept at integrating AI/ML capabilities and database architecture, with a passion for delivering robust, reliable, and performant backend services in fast-paced environments.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Backend Software Engineer (Flutter \& Platform)} \hfill 07/2021 -- Present \\
+\org{PuStack} \bull \href{https://pustack.com}{pustack.com} \hfill \place{Panipat, Haryana, India}
+\begin{itemize}
+  \item Designed, implemented, and deployed scalable backend APIs powering real-time video and chat features, supporting thousands of concurrent users with high availability.
+  \item Integrated and maintained multiple databases including NoSQL solutions, optimizing data models and query performance for rapid, reliable production deployments.
+  \item Led cloud-native application initiatives using containerization and CI/CD pipelines (\textbf{GitHub Actions}, Docker), automating testing, delivery, and infrastructure changes.
+  \item Collaborated cross-functionally with engineering, DevOps, and product teams to deliver new features, ensure uptime, and drive continuous system improvements.
+  \item Orchestrated deployment workflows with \textbf{Kubernetes}, enabling seamless rollouts and real-time monitoring of microservices.
+  \item Developed and maintained native SDK integrations (e.g., video platforms), increasing platform engagement by 25\% and enhancing developer productivity through automation.
+  \item Researched, prototyped, and incorporated AI/ML-powered experiences (recommendations, chat assistants) leveraging frameworks such as \textbf{TensorFlow} and \textbf{LangChain}.
+  \item Championed high standards for code quality, mentoring junior engineers and facilitating knowledge sharing to elevate team capabilities.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 ----------
+\section{Key Projects}
+\org{Majestic UI} \bull Open Source \bull \href{https://github.com/ronak99/majestic-ui}{github.com/ronak99/majestic-ui}
+\begin{itemize}
+  \item Architected a reusable UI library for rapid product development in Flutter, leveraging modular design, theming, and maintainability best practices.
+\end{itemize}
+
+\org{Skype Clone in Flutter} \bull Production Prototype
+\begin{itemize}
+  \item Engineered a scalable video calling application with cloud backend, robust API layer, and seamless integration of native SDKs.
+\end{itemize}
+
+\org{Inquirely} \bull AI Chatbot System
+\begin{itemize}
+  \item Developed a custom AI-powered chat assistant backed by \textbf{LangChain} and API microservices, supporting conversational queries and real-time assistance.
+\end{itemize}
+
+% ---------- DYNAMIC SECTION 2 ----------
+\section{Technical Skills}
+\textbf{Languages:} Python, Kotlin, Java, Go, Swift, Dart \\
+\textbf{Frameworks:} TensorFlow, LangChain, Node.js, Flutter, ReactJS, Next.js \\
+\textbf{Databases:} Redis, MongoDB, PostgreSQL, Firebase \\
+\textbf{DevOps:} Docker, Kubernetes, GitHub Actions, Terraform \\
+\textbf{Cloud:} Cloud-native development and deployment, CI/CD, Automated testing \\
+\textbf{Other:} API Design, Microservices, Scalable systems, AI/ML Integration
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{Bachelors of Engineering} \bull RGPV University \bull Bhopal, MP \bull 2021 \bull GPA: 4.25/5.0
+
+\end{document}
