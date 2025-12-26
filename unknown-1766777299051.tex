@@ -1,0 +1,135 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - CANDIDATE_NAME},
+  pdfauthor={CANDIDATE_NAME},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries \placeholder{CANDIDATE\_NAME}}\par\vspace{6pt}
+    {\color{Primary}
+      \placeholder{LOCATION} \bull
+      \blackLink{mailto:\placeholder{EMAIL}}{\placeholder{EMAIL}} \bull
+      \placeholder{PHONE} \bull
+      \blackLink{\placeholder{LINKEDIN\_URL}}{\placeholder{LINKEDIN\_HANDLE}} \bull
+      \blackLink{\placeholder{WEBSITE\_URL}}{\placeholder{WEBSITE\_DOMAIN}}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+\placeholder{Professional summary paragraph describing candidate's experience level, key skills, and career focus. Should be concise (2-3 sentences) and tailored to the target role.}
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{\placeholder{JOB\_TITLE}} \hfill \placeholder{START\_DATE} -- \placeholder{END\_DATE} \\
+\org{\placeholder{COMPANY\_NAME}} \bull \href{\placeholder{COMPANY\_URL}}{\placeholder{COMPANY\_DOMAIN}} \hfill \place{\placeholder{LOCATION}}
+\begin{itemize}
+  \item \placeholder{Achievement-focused bullet point describing impact, technologies used, and quantifiable results when possible. Use \textbackslash textbf\{\} to emphasize key technologies or metrics.}
+  \item \placeholder{Additional bullet points following same format - typically 3-6 bullets per position}
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 (OPTIONAL) ----------
+\section{Dynamic Section / Optional Section}
+
+\placeholder{[AI AGENT: Add appropriate content here based on chosen section type. This entire section may be omitted if not relevant to the candidate.]}
+
+% ---------- DYNAMIC SECTION 2 (OPTIONAL) ----------
+\section{Dynamic Section / Optional Section}
+
+\placeholder{[AI AGENT: Add appropriate content here based on chosen section type. This entire section may be omitted if not relevant to the candidate.]}
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{\placeholder{DEGREE\_NAME}} \bull \placeholder{INSTITUTION\_NAME} \bull \placeholder{LOCATION} \bull \placeholder{GRADUATION\_YEAR} \bull GPA: \placeholder{GPA}/\placeholder{SCALE}
+
+\end{document}
