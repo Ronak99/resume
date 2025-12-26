@@ -1,0 +1,160 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Sarah Johnson},
+  pdfauthor={Sarah Johnson},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Sarah Johnson}\par\vspace{6pt}
+    {\color{Primary}
+      Austin, Texas, USA \bull
+      \blackLink{mailto:sarah.johnson@email.com}{sarah.johnson@email.com} \bull
+      +1-555-987-6543 \bull
+      \blackLink{https://linkedin.com/in/sarahjohnson}{linkedin.com/in/sarahjohnson} \bull
+      \blackLink{https://github.com/sarahjohnson}{github.com/sarahjohnson}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Results-driven Senior Product Manager with 6+ years of experience leading cross-functional teams to deliver impactful, user-centric digital products at enterprise scale. Expert in data-driven product strategy, end-to-end product lifecycle ownership, and agile execution, with a proven record of increasing user engagement, adoption, and revenue through actionable product analytics, rigorous experimentation, and collaborative leadership. Skilled at translating user research into business results, aligning stakeholders around OKRs, and driving measurable business outcomes in fast-paced environments.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Product Manager} \hfill 03/2021 -- Present \\
+\org{Microsoft} \bull \href{https://microsoft.com}{microsoft.com} \hfill \place{Redmond, WA}
+\begin{itemize}
+  \item Own end-to-end product strategy and delivery for Azure DevOps, driving a \textbf{35\% increase in enterprise adoption} and leading a cross-functional team of 12 engineers and designers across multiple time zones.
+  \item Conducted user research and in-depth interviews with \textbf{200+ customers}, transforming insights into actionable PRDs, wireframes, and prioritized product roadmaps.
+  \item Established and operationalized the \textbf{OKR framework}, increasing team alignment and delivery effectiveness by \textbf{50\%} and ensuring progress against key business objectives.
+  \item Leveraged \textbf{Mixpanel}, \textbf{Amplitude}, and \textbf{SQL} analytics to conduct A/B tests, optimize user journeys, and identify high-impact features.
+  \item Launched 3 major features, including advanced analytics dashboards and workflow automations, resulting in \textbf{\$2M+ in additional annual revenue} and \textbf{40\% growth in monthly active users}.
+  \item Collaborated with engineering, design, and data teams to scope, prioritize, and coordinate feature launches; maintained product backlog and managed user stories in \textbf{Jira/Confluence}.
+  \item Presented strategic roadmaps, business cases, and ROI analyses to VP-level stakeholders, ensuring transparency, alignment, and executive sponsorship.
+  \item Delivered UX improvements that reduced support tickets by \textbf{23\%} and increased customer satisfaction scores.
+\end{itemize}
+\vspace{12pt}
+
+\role{Product Manager} \hfill 06/2018 -- 02/2021 \\
+\org{Amazon} \bull \href{https://amazon.com}{amazon.com} \hfill \place{Seattle, WA}
+\begin{itemize}
+  \item Owned product lifecycle for seller tools serving \textbf{100K+ merchants}, increasing seller satisfaction scores from \textbf{3.2 to 4.5 stars}.
+  \item Collaborated with engineering, UX, and data teams across 3 time zones to design, launch, and iterate platform features that improved merchant experience and operational efficiency.
+  \item Implemented data-driven decision making utilizing \textbf{Google Analytics}, \textbf{SQL}, and A/B testing methodologies to optimize features and drive adoption.
+  \item Reduced customer support tickets by \textbf{25\%} through actionable UX/UI improvements and proactive customer feedback integration.
+  \item Regularly presented quarterly business reviews, OKR progress, and product impact reports to VP-level and cross-functional stakeholders.
+  \item Coordinated API design, documentation, and partner enablement to facilitate smooth merchant onboarding and ecosystem integrations.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 ----------
+\section{Key Skills}
+\textbf{Product \& Analytics:} Product Analytics (Mixpanel, Amplitude, Google Analytics), A/B Testing, Experimentation, SQL, Data Analysis, Wireframing (Figma, Sketch)\\
+\textbf{Leadership:} Cross-functional Team Leadership, Stakeholder Management, Agile/Scrum, OKRs, Strategic Storytelling, Presentation Skills\\
+\textbf{Product Management:} Product Roadmaps, Backlog Management, PRDs, API Design, Jira/Confluence/Asana\\
+\textbf{Soft Skills:} Data-driven Decision Making, User-centric Design, Communication, Problem Solving, Team Collaboration\\
+\textbf{Languages:} English (Native), Spanish (Conversational)
+
+% ---------- DYNAMIC SECTION 2 ----------
+\section{Achievements \& Certifications}
+\textbf{Product Manager of the Year}, Microsoft \bull 2023 \\
+\textbf{Innovation Award}, Amazon \bull 2020 \\
+\textbf{Certified Scrum Product Owner (CSPO)} \bull Scrum Alliance \bull 2022 \\
+\textbf{Google Analytics Individual Qualification} \bull Google \bull 2021
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{MBA in Technology Management} \bull Stanford Graduate School of Business \bull Stanford, CA \bull 2018 \bull GPA: 3.9/4.0\\
+Dean's List, Product Management Fellowship
+
+\vspace{6pt}
+
+\textbf{B.S. in Computer Science} \bull University of Texas at Austin \bull Austin, TX \bull 2016 \bull GPA: 3.7/4.0
+
+\end{document}
