@@ -2,7 +2,7 @@ name: Generate PDF
 
 # n8n will commit the tex file to the repository
 # workflow gets triggered
-# pdf is generated and saved with the same name in the generated branch
+# pdf is generated and saved with the same name in the generated-test branch
 
 on:
   push:
@@ -114,20 +114,20 @@ jobs:
             exit 1
           fi
           
-          # Checkout or create the generated branch
-          if git show-ref --verify --quiet refs/remotes/origin/generated; then
-            git checkout -b generated origin/generated 2>/dev/null || git checkout generated
-            if ! git pull --rebase origin generated; then
-              ERROR_MSG="Failed to pull/rebase generated branch"
+          # Checkout or create the generated-test branch
+          if git show-ref --verify --quiet refs/remotes/origin/generated-test; then
+            git checkout -b generated-test origin/generated-test 2>/dev/null || git checkout generated-test
+            if ! git pull --rebase origin generated-test; then
+              ERROR_MSG="Failed to pull/rebase generated-test branch"
               echo "ERROR_MSG=${ERROR_MSG}" >> $GITHUB_ENV
               echo "$ERROR_MSG"
               exit 1
             fi
           else
-            git checkout -b generated
+            git checkout -b generated-test
           fi
           
-          # Copy stored PDF to the generated branch
+          # Copy stored PDF to the generated-test branch
           PDF_BASENAME=$(basename "$PDF_FILE")
           if [ -f "/tmp/generated_pdfs/$PDF_BASENAME" ]; then
             cp "/tmp/generated_pdfs/$PDF_BASENAME" "$PDF_FILE"
@@ -150,8 +150,8 @@ jobs:
               exit 1
             fi
             COMMIT_SHA=$(git rev-parse HEAD)
-            if ! git push origin generated; then
-              ERROR_MSG="Failed to push to generated branch"
+            if ! git push origin generated-test; then
+              ERROR_MSG="Failed to push to generated-test branch"
               echo "ERROR_MSG=${ERROR_MSG}" >> $GITHUB_ENV
               echo "$ERROR_MSG"
               exit 1
@@ -182,7 +182,7 @@ jobs:
           fi
           
           # Construct GitHub raw URL for the PDF file
-          PDF_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/generated/${PDF_FILE}"
+          PDF_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/generated-test/${PDF_FILE}"
           
           echo "Triggering webhook for $TEX_FILE -> $PDF_FILE"
           echo "PDF URL: $PDF_URL"
@@ -196,7 +196,7 @@ jobs:
           COMMIT_ESC=$(printf '%s' "$COMMIT_SHA" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g')
           
           # Build JSON payload using printf to avoid heredoc issues
-          WEBHOOK_PAYLOAD=$(printf '{"status":"success","pdf_url":"%s","pdf_file":"%s","tex_file":"%s","repository":"%s","branch":"generated","commit":"%s"}' \
+          WEBHOOK_PAYLOAD=$(printf '{"status":"success","pdf_url":"%s","pdf_file":"%s","tex_file":"%s","repository":"%s","branch":"generated-test","commit":"%s"}' \
             "$PDF_URL_ESC" "$PDF_FILE_ESC" "$TEX_FILE_ESC" "$REPO_ESC" "$COMMIT_ESC")
           
           if ! curl -X POST "$WEBHOOK_URL" \
