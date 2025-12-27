@@ -1,0 +1,154 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Sarah Johnson},
+  pdfauthor={Sarah Johnson},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Sarah Johnson}\par\vspace{6pt}
+    {\color{Primary}
+      Austin, Texas, USA \bull
+      \blackLink{mailto:sarah.johnson@email.com}{sarah.johnson@email.com} \bull
+      +1-555-987-6543 \bull
+      \blackLink{https://linkedin.com/in/sarahjohnson}{linkedin.com/in/sarahjohnson} \bull
+      \blackLink{https://github.com/sarahjohnson}{github.com/sarahjohnson}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Accomplished engineering leader with 6+ years of experience at the intersection of AI, payments, and developer tooling. Proven success in architecting scalable backend and full-stack solutions, leading cross-functional teams, and driving technical direction in highly ambiguous, fast-paced startup environments. Adept at system design, integrating with modern AI providers, and building payments infrastructure to support cutting-edge products.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Product Manager, Azure DevOps \& AI Platform} \hfill 03/2021 -- Present \\
+\org{Microsoft} \bull \href{https://microsoft.com}{microsoft.com} \hfill \place{Redmond, WA}
+\begin{itemize}
+  \item Drove architecture and technical direction for AI-powered developer and payments tooling products serving enterprise customers globally.
+  \item Led a cross-functional team of 12 engineers/designers to launch 3 full-stack features, generating \$2M in new annual revenue and increasing enterprise adoption by 35\%.
+  \item Built and integrated cloud-native APIs between Azure DevOps, AI model providers (OpenAI, Azure Cognitive), and third-party payment systems.
+  \item Oversaw system design and implementation of scalable backend services, processing 10K+ transactions per day with 99.99\% uptime.
+  \item Partnered with product, sales, and customer teams, including forward-deployed technical support for sales development and large client onboarding.
+  \item Championed a culture of experimentation with AI-driven workflows and modern developer tools.
+\end{itemize}
+\vspace{12pt}
+
+\role{Product Manager, Payments \& Seller Infrastructure} \hfill 06/2018 -- 02/2021 \\
+\org{Amazon} \bull \href{https://amazon.com}{amazon.com} \hfill \place{Seattle, WA}
+\begin{itemize}
+  \item Owned full-stack development and lifecycle of merchant-facing payments solutions and infrastructure, serving 100K+ global sellers.
+  \item Collaborated with engineering teams to design RESTful APIs and backend systems for payments processing, reducing failed transaction rates by 18\%.
+  \item Worked with AI/ML teams to launch automated fraud detection models, decreasing support tickets by 25\%.
+  \item Improved merchant satisfaction score from 3.2 to 4.5 stars via modern, customer-centric UX and developer documentation.
+  \item Drove cross-team technical alignment, leading design reviews and product roadmaps across developer and infrastructure tools groups.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 (SKILLS) ----------
+\section{Technical \& Leadership Skills}
+\textbf{Programming \& Backend:} SQL, Python, RESTful APIs, Payments Systems, Cloud (Azure, AWS), API Design, Microservices Architecture, System Design, Data Analysis \\
+\textbf{Full-Stack:} Figma, Sketch, Modern Web UI/UX, Wireframing, Agile \& Scrum \\
+\textbf{AI/Developer Tools:} OpenAI APIs, Azure Cognitive Services, Product Analytics (Mixpanel, Amplitude, Google Analytics) \\
+\textbf{Other:} Cross-functional Leadership, Stakeholder Management, User Research, Strategic Planning, Experimentation, English (Native), Spanish (Conversational) \\
+
+% ---------- DYNAMIC SECTION 2 (PROJECTS & AWARDS) ----------
+\section{Projects \& Recognition}
+\textbf{Internal Prioritization Tool:} Built and deployed tool for product prioritization used by 50+ PMs, improving cross-team efficiency. \\
+\textbf{Open Source PM Framework:} Authored a product management framework garnering 1,000+ GitHub stars. \\
+\textbf{Awards:} Product Manager of the Year, Microsoft (2023); Innovation Award, Amazon (2020) \\
+\textbf{Certifications:} Certified Scrum Product Owner (CSPO); Google Analytics Individual Qualification \\
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{MBA in Technology Management} \bull Stanford Graduate School of Business \bull Stanford, CA \bull 2018 \bull GPA: 3.9/4.0
+
+\vspace{6pt}
+\textbf{B.S. in Computer Science} \bull University of Texas at Austin \bull Austin, TX \bull 2016 \bull GPA: 3.7/4.0
+
+\end{document}
