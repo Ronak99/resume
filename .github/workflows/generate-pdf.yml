@@ -7,7 +7,7 @@ name: Generate PDF
 on:
   push:
     branches:
-      - 'n8n'  # Triggers on push to any branch
+      - 'n8n-test'  # Triggers on push to any branch
 
 jobs:
   generate-pdf:
