@@ -1,0 +1,152 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Hrithik Roshan},
+  pdfauthor={Hrithik Roshan},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Hrithik Roshan}\par\vspace{6pt}
+    {\color{Primary}
+      Mumbai, Maharashtra, India \bull
+      \blackLink{mailto:Hroshan@email.com}{Hroshan@email.com} \bull
+      +9183748574847 \bull
+      \blackLink{https://LinkedIn.com/hrithik}{LinkedIn.com/hrithik} \bull
+      \blackLink{https://ronakpunase.dev}{ronakpunase.dev}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Adaptable Data Engineer with 2+ years of experience designing and optimizing scalable data pipelines for health and cloud monitoring systems. Proficient in Python, AWS, GCP, and data processing frameworks, with a proven track record of deploying services monitoring and anomaly detection solutions. Passionate about leveraging health and telemetry data to unlock actionable insights and improve data-driven product efficiency.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\role{Senior Data Engineer} \hfill 03/2021 -- Present \\
+\org{Microsoft} \bull \href{https://microsoft.com}{microsoft.com} \hfill \place{Redmond, WA}
+\begin{itemize}
+  \item Architected and implemented high-throughput \textbf{data pipelines} in Python and Spark on \textbf{AWS} and \textbf{GCP}, processing terabytes of monitoring and health telemetry data daily.
+  \item Designed and deployed anomaly detection systems leveraging statistical models and machine learning for cloud service monitoring, improving incident detection speed by 43\%.
+  \item Led cost optimization of cloud-based data storage, reducing operational expenses by 30\% through efficient data partitioning and lifecycle management.
+  \item Built data models to extract actionable health signals for customer-facing dashboards, increasing user engagement by 35\%.
+  \item Collaborated cross-functionally with cloud engineering and data analytics teams to define data quality metrics and implement end-to-end monitoring solutions.
+\end{itemize}
+\vspace{12pt}
+\role{Data Engineer} \hfill 06/2018 -- 02/2021 \\
+\org{Amazon} \bull \href{https://amazon.com}{amazon.com} \hfill \place{Seattle, WA}
+\begin{itemize}
+  \item Developed and maintained scalable ETL pipelines in Python and SQL, integrating multi-source health and telemetry data for analytics platforms.
+  \item Migrated data workload to \textbf{AWS} using S3, Redshift, and Glue, improving query performance by 45\% and reducing storage costs by 25\%.
+  \item Implemented monitoring frameworks for operational data streams, including OpenTelemetry instrumentation, ensuring 99.9\% data reliability.
+  \item Automated health data quality validation and anomaly alerting, reducing data loss events by 60\%.
+  \item Partnered with analytics teams to deliver actionable insights from sensor and athlete data to product management.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 (OPTIONAL) ----------
+\section{Key Skills}
+\textbf{Programming:} Python, SQL, Spark, Bash \\
+\textbf{Cloud:} AWS (S3, Redshift, Glue, Lambda), GCP (BigQuery, Dataflow) \\
+\textbf{Data Engineering:} ETL Pipelines, Data Warehousing, Monitoring Frameworks, Anomaly Detection, OpenTelemetry \\
+\textbf{Tools:} Docker, Airflow, Git, Jira, Amplitude \\
+\textbf{Soft Skills:} Cross-functional Collaboration, Agile, Data-driven Decision Making
+
+% ---------- DYNAMIC SECTION 2 (OPTIONAL) ----------
+\section{Awards \& Certifications}
+\textbf{Product Manager of the Year} \bull Microsoft \bull 2023 \\
+\textbf{Innovation Award} \bull Amazon \bull 2020 \\
+\textbf{Certified Scrum Product Owner (CSPO)} \bull Scrum Alliance \\
+\textbf{Google Analytics Individual Qualification} \bull Google
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{MBA in Technology Management} \bull Stanford Graduate School of Business \bull Stanford, CA \bull 2018 \bull GPA: 3.9/4.0
+
+\textbf{B.S. in Computer Science} \bull University of Texas at Austin \bull Austin, TX \bull 2016 \bull GPA: 3.7/4.0
+
+\end{document}
