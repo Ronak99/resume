@@ -1,0 +1,165 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Sarah Johnson},
+  pdfauthor={Sarah Johnson},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Sarah Johnson}\par\vspace{6pt}
+    {\color{Primary}
+      Austin, Texas, USA \bull
+      \blackLink{mailto:sarah.johnson@email.com}{sarah.johnson@email.com} \bull
+      +1-555-987-6543 \bull
+      \blackLink{https://linkedin.com/in/sarahjohnson}{linkedin.com/in/sarahjohnson} \bull
+      \blackLink{https://github.com/sarahjohnson}{github.com/sarahjohnson}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Product-focused technical leader with 6+ years of experience driving backend architecture, scalable systems, and AI-powered solutions at top-tier technology companies. Proven ability to build developer tools, payments, and infrastructure integrations, collaborating cross-functionally with founders, engineering, and sales to shape product direction. Passionate about solving complex engineering problems and establishing high-performance company culture in early-stage startup environments.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+
+\role{Senior Product Manager, Platform Engineering} \hfill 03/2021 -- Present \\
+\org{Microsoft} \bull \href{https://microsoft.com}{microsoft.com} \hfill \place{Redmond, WA}
+\begin{itemize}
+  \item Directed technical strategy and backend system design for \textbf{Azure DevOps}, enabling 35\% enterprise adoption growth and supporting 200K+ users globally.
+  \item Defined scalable integration architecture for AI-powered developer tools and payment platform add-ons, resulting in 3 new features and \$2M annual revenue.
+  \item Oversaw a cross-functional team of 12 engineers/designers to deliver next-gen APIs, infrastructure automation, and internal developer tools.
+  \item Led forward-deployed technical presentations and partnered with product/sales leadership to win strategic accounts, directly influencing product direction.
+  \item Instituted OKR-driven processes that improved alignment and delivery efficiency by 50\%.
+\end{itemize}
+\vspace{12pt}
+
+\role{Product Manager, Seller Infrastructure} \hfill 06/2018 -- 02/2021 \\
+\org{Amazon} \bull \href{https://amazon.com}{amazon.com} \hfill \place{Seattle, WA}
+\begin{itemize}
+  \item Drove roadmap for \textbf{merchant payments} and infrastructure tools serving 100K+ global sellers; increased satisfaction scores from 3.2 to 4.5.
+  \item Collaborated with backend engineering to launch payment integrations and real-time analytics, reducing support tickets by 25\%.
+  \item Orchestrated large-scale system improvements spanning devops, API reliability, and platform scalability across three time zones.
+  \item Presented technical business reviews with VP/executive leadership and contributed to company-wide developer tool pilots.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 ----------
+\section{Key Projects}
+\org{Internal Product Prioritization Tool} \bull Internal Tool \bull Microsoft
+\begin{itemize}
+  \item Built and deployed a robust backend platform for product prioritization, used by 50+ PMs to streamline decision making and roadmap planning.
+  \item Integrated SQL-based analytics, role-based access, and dashboarding capabilities for scalable usage across teams.
+\end{itemize}
+
+\org{Open Source Product Management Framework} \bull Open Source \bull \href{https://github.com/sarahjohnson}{github.com/sarahjohnson}
+\begin{itemize}
+  \item Developed and architected a modular product management framework with 1,000+ GitHub stars, enabling AI-driven feature scoring and plug-and-play integrations.
+  \item Supported open source contributions, versioning, and developer documentation for community expansion.
+\end{itemize}
+
+% ---------- DYNAMIC SECTION 2 ----------
+\section{Technical Skills \& Certifications}
+
+\textbf{Backend Technologies:} Python, Java, SQL, REST APIs, Payments Integration, Infrastructure-as-Code \\
+\textbf{AI/ML:} Azure Cognitive Services, OpenAI APIs, Product Analytics (Mixpanel, Amplitude, Google Analytics) \\
+\textbf{Developer Tools:} Jira, Confluence, Asana, Figma, Sketch \\
+\textbf{System Design:} Distributed Systems, API Design, Scalable Microservices, Cloud Platforms (Azure, AWS) \\
+\textbf{Process:} Agile/Scrum, OKR Implementation, Cross-functional Leadership \\
+\textbf{Certifications:} Certified Scrum Product Owner (CSPO), Google Analytics Individual Qualification
+
+% ---------- EDUCATION ----------
+\section{Education}
+
+\textbf{MBA in Technology Management} \bull Stanford Graduate School of Business \bull Stanford, CA \bull 2018 \bull GPA: 3.9/4.0 \\
+Dean's List, Product Management Fellowship
+
+\vspace{8pt}
+\textbf{B.S. in Computer Science} \bull University of Texas at Austin \bull Austin, TX \bull 2016 \bull GPA: 3.7/4.0
+
+\end{document}
