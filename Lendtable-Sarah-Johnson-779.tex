@@ -1,0 +1,164 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ---------- Fonts & layout ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Set SourceSans3 as the main font
+\setmainfont{SourceSans3}[
+  Path = ./sourceSans/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ---------- Colors ----------
+\definecolor{Primary}{RGB}{23,43,77}
+\definecolor{RuleGray}{gray}{0.25}
+\definecolor{lightblue}{RGB}{10, 132, 255}
+
+% ---------- PDF meta ----------
+\hypersetup {
+  pdftitle={Resume - Sarah Johnson},
+  pdfauthor={Sarah Johnson},
+  colorlinks=true,
+  linkcolor=lightblue,
+  urlcolor=lightblue,
+  citecolor=lightblue
+}
+
+% ---------- Section styling ----------
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}{10pt}{6pt}{%
+    \Large\bfseries\color{black}%
+  }%
+}
+\renewcommand{\@seccntformat}[1]{}
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \let\@svsec\@empty
+  \fi
+  \begingroup
+    #6{%
+      \MakeUppercase{#8}\\[-4pt]%
+      \textcolor{RuleGray}{\rule{\linewidth}{0.5pt}}%
+    }%
+  \endgroup
+  \@xsect{#5}%
+}
+\makeatother
+
+% ---------- Lists ----------
+\setlength{\leftmargini}{0pt}
+\setlength{\itemindent}{0pt}
+\setlength{\itemsep}{3pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parsep}{0pt}
+
+% ---------- Small helpers ----------
+\newcommand{\bull}{\kern0.45em\textbullet\kern0.45em}
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\org}[1]{\textbf{#1}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\blackLink}[2]{\href{#1}{\textcolor{black}{#2}}}
+\newcommand{\blueLink}[2]{\href{#1}{\textcolor{lightblue}{#2}}}
+\newcommand{\placeholder}[1]{\lbrack #1\rbrack}
+
+% ---------- Header ----------
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge\bfseries Sarah Johnson}\par\vspace{6pt}
+    {\color{Primary}
+      Austin, Texas, USA \bull
+      \blackLink{mailto:sarah.johnson@email.com}{sarah.johnson@email.com} \bull
+      +1-555-987-6543 \bull
+      \blackLink{https://linkedin.com/in/sarahjohnson}{linkedin.com/in/sarahjohnson} \bull
+      \blackLink{https://github.com/sarahjohnson}{github.com/sarahjohnson}
+    }
+  \end{center}
+  \vspace{-8pt}
+}
+\makeatother
+
+% ---------- Page Style ----------
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\vspace{15pt}
+
+% ---------- SUMMARY ----------
+\section{Summary}
+Accomplished technical leader and engineer with 6+ years working at the intersection of product, engineering, and AI infrastructure. Hands-on experience building and scaling end-to-end systems, driving innovative solutions for complex domains such as payments, cloud platforms, and AI integrations. Adept at setting technical vision and collaborating cross-functionally in fast-paced, ambiguous startup environments.
+
+% ---------- EXPERIENCE ----------
+\section{Experience}
+
+\role{Senior Product Manager} \hfill 03/2021 -- Present \\
+\org{Microsoft} \bull \href{https://microsoft.com}{microsoft.com} \hfill \place{Redmond, WA}
+\begin{itemize}
+  \item Spearheaded the technical vision and system design for Azure DevOps, architecting scalable integrations and growing enterprise adoption by \textbf{35\%}.
+  \item Led cross-functional teams of 12+ engineers \& designers to deliver high-impact platform features, generating \textbf{\$2M+} in annual revenue.
+  \item Drove AI-powered enhancements and automation across developer workflows, collaborating with internal AI and infrastructure teams.
+  \item Championed payment and billing feature initiatives, collaborating with finance and engineering to streamline platform monetization.
+  \item Implemented robust OKR-driven processes, increasing technical team alignment and velocity by \textbf{50\%}.
+  \item Partnered with founders and product executives to define roadmap, frequently representing engineering in strategic customer and sales discussions.
+\end{itemize}
+\vspace{12pt}
+
+\role{Product Manager} \hfill 06/2018 -- 02/2021 \\
+\org{Amazon} \bull \href{https://amazon.com}{amazon.com} \hfill \place{Seattle, WA}
+\begin{itemize}
+  \item Owned backend product lifecycle for scalable seller tools platform, supporting \textbf{100K+} merchants and integrating with payment \& infrastructure systems.
+  \item Designed and implemented metrics dashboards using \textbf{SQL, Mixpanel, and Amplitude} for data-driven product and engineering insights.
+  \item Led efforts to optimize API reliability and automate support, reducing customer support tickets by \textbf{25\%}.
+  \item Drove user-focused UX improvements, boosting satisfaction from 3.2 to \textbf{4.5 stars} while ensuring stability at scale.
+  \item Regularly collaborated with engineering, infrastructure, and payment teams across multiple time zones to launch critical features.
+  \item Presented technical vision and platform updates to VP-level stakeholders and participated in technical review sessions with cross-functional teams.
+\end{itemize}
+\vspace{12pt}
+
+% ---------- DYNAMIC SECTION 1 ----------
+\section{Technical Skills}
+\textbf{Programming \& Data:} SQL, Python, API Design, Data Analysis, Cloud Infrastructure (Azure, AWS) \\
+\textbf{AI \& Product:} AI Integrations, A/B Testing, Product Analytics (Mixpanel, Amplitude, Google Analytics) \\
+\textbf{Frameworks \& Tools:} Agile/Scrum, Jira, Confluence, Asana, Wireframing (Figma, Sketch) \\
+\textbf{Other:} Payments Integration, System Design, Stakeholder Management, English (Native), Spanish (Conversational) \\
+
+% ---------- DYNAMIC SECTION 2 ----------
+\section{Key Projects \& Awards}
+\org{Internal Prioritization Tool} \bull Internal Platform \\
+\begin{itemize}
+  \item Built and deployed an internal tool for product decisioning, now used by \textbf{50+} PMs, engineering, and sales to drive velocity in high-growth environments.
+\end{itemize}
+\org{Open-Source Management Framework} \bull Open Source \bull \href{https://github.com/sarahjohnson}{github.com/sarahjohnson} \\
+\begin{itemize}
+  \item Created a product management framework with \textbf{1,000+ GitHub stars}, supporting community-driven innovation for modern product and engineering teams.
+\end{itemize}
+\textbf{Product Manager of the Year} \bull Microsoft \bull 2023 \\
+\textbf{Innovation Award} \bull Amazon \bull 2020
+
+% ---------- EDUCATION ----------
+\section{Education}
+\textbf{MBA in Technology Management} \bull Stanford Graduate School of Business \bull Stanford, CA \bull 2018 \bull GPA: 3.9/4.0 \\
+Dean's List, Product Management Fellowship
+
+\vspace{6pt}
+
+\textbf{B.S. in Computer Science} \bull University of Texas at Austin \bull Austin, TX \bull 2016 \bull GPA: 3.7/4.0
+
+\end{document}
